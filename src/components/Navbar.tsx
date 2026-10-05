@@ -54,9 +54,9 @@ export default function Navbar() {
 
   const navItems = [
     { label: "About", href: "#about" },
+    { label: "Services", href: "#services" },
     { label: "Projects", href: "#projects" },
     { label: "Capabilities", href: "#capabilities" },
-    { label: "Services", href: "#services" },
   ];
 
   // When the menu is open its background is blue, so always use light styling
@@ -69,9 +69,8 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-          isOpen ? "" : "backdrop-blur-md"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isOpen ? "" : "backdrop-blur-md"
+          }`}
       >
         <div className="relative max-w-7xl mx-auto flex items-center justify-between px-4 py-4 md:px-8">
           {/* Logo Left */}
@@ -96,9 +95,8 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`group relative inline-block pb-1 text-xs font-bold tracking-widest uppercase transition-colors duration-200 hover:text-orange-500 ${
-                  isDarkTheme ? "text-white" : "text-[#171717]"
-                }`}
+                className={`group relative inline-block pb-1 text-xs font-bold tracking-widest uppercase transition-colors duration-200 hover:text-orange-500 ${isDarkTheme ? "text-white" : "text-[#171717]"
+                  }`}
               >
                 {item.label}
                 <span className="absolute left-0 bottom-0 w-full h-[1px] bg-orange-500 scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
@@ -127,9 +125,8 @@ export default function Navbar() {
 
             <Link
               href="#contact"
-              className={`hidden md:block group relative overflow-hidden px-6 py-2.5 rounded-full font-bold tracking-wide transition-colors duration-300 ${
-                isDarkTheme ? "bg-white text-[#2A3490]" : "bg-[#2A3490] text-white"
-              }`}
+              className={`hidden md:block group relative overflow-hidden px-6 py-2.5 rounded-full font-bold tracking-wide transition-colors duration-300 ${isDarkTheme ? "bg-white text-[#2A3490]" : "bg-[#2A3490] text-white"
+                }`}
             >
               <span className="absolute inset-0 w-full h-full bg-orange-500 scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
               <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
@@ -143,34 +140,53 @@ export default function Navbar() {
       {/* Mobile Full Screen Menu — sibling of <header> so \`fixed\` is relative to the viewport */}
       <div
         aria-hidden={!isOpen}
-        className={`md:hidden fixed inset-0 z-40 h-dvh w-full bg-[#2A3490] flex flex-col items-center justify-center transition-transform duration-500 ease-in-out ${
-          isOpen
+        className={`md:hidden fixed inset-0 z-40 h-dvh w-full bg-[#2A3490] flex flex-col justify-between px-6 pt-28 pb-8 transition-transform duration-500 ease-in-out ${isOpen
             ? "translate-y-0"
             : "-translate-y-full pointer-events-none"
-        }`}
+          }`}
       >
-        <div className="flex flex-col items-center space-y-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              tabIndex={isOpen ? 0 : -1}
-              className="group relative inline-block w-fit pb-1 text-3xl font-bold tracking-widest text-white uppercase transition-colors duration-200 hover:text-orange-500"
-            >
-              {item.label}
-              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-orange-500 scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
-            </Link>
-          ))}
+        <div className="flex-1 overflow-y-auto">
+          {/* Main Links (2 Column Grid) */}
+          <div className="grid grid-cols-1 gap-y-6 gap-x-4 mb-10">
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setIsOpen(false)}
+                tabIndex={isOpen ? 0 : -1}
+                className="group relative inline-block w-fit pb-1 text-xl sm:text-3xl font-black tracking-widest text-white uppercase transition-colors duration-200 hover:text-orange-500"
+              >
+                {item.label}
+                <span className="absolute left-0 bottom-0 w-full h-[2px] bg-orange-500 scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
+              </Link>
+            ))}
+          </div>
 
-          <Link
-            href="#contact"
-            onClick={() => setIsOpen(false)}
-            tabIndex={isOpen ? 0 : -1}
-            className="mt-4 rounded-full bg-white px-8 py-3 font-bold tracking-wide text-[#2A3490] transition-colors hover:bg-orange-500 hover:text-white"
-          >
-            Contact Us
-          </Link>
+          {/* Sub Links (2 Column Grid) */}
+          <div className="grid grid-cols-2 gap-y-4 gap-x-4 mb-8">
+            <Link href="#web" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">WEB APPS</Link>
+            <Link href="#mobile" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">MOBILE APPS</Link>
+            <Link href="#cloud" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">CLOUD INFRA</Link>
+            <Link href="#ai" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">AI SOLUTIONS</Link>
+            <Link href="#enterprise" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">ENTERPRISE</Link>
+            <Link href="#blog" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">BLOG</Link>
+          </div>
+        </div>
+
+        {/* Contact Info at bottom */}
+        <div className="flex flex-col gap-5 pt-8 border-t border-white/20 mt-auto">
+          <div>
+            <div className="text-white/60 text-[10px] font-semibold uppercase tracking-widest mb-1">PHONE</div>
+            <a href="tel:+9779867139612" tabIndex={isOpen ? 0 : -1} className="text-white text-sm sm:text-base font-extrabold tracking-wide hover:text-orange-500 transition-colors">+977-9867139612</a>
+          </div>
+          <div>
+            <div className="text-white/60 text-[10px] font-semibold uppercase tracking-widest mb-1">EMAIL</div>
+            <a href="mailto:info@sutantratechnology.com" tabIndex={isOpen ? 0 : -1} className="text-white text-sm sm:text-base font-extrabold tracking-wide hover:text-orange-500 transition-colors">info@sutantratechnology.com</a>
+          </div>
+          <div>
+            <div className="text-white/60 text-[10px] font-semibold uppercase tracking-widest mb-1">ADDRESS</div>
+            <p className="text-white text-sm sm:text-base font-extrabold tracking-wide">Butwal, Lumbini Province <br /> Nepal</p>
+          </div>
         </div>
       </div>
     </>
