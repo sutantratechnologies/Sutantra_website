@@ -59,6 +59,39 @@ export default function Navbar() {
     { label: "Capabilities", href: "#capabilities" },
   ];
 
+  // Custom extremely smooth scroll to top function
+  const smoothScrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsOpen(false);
+    
+    // Push state to history if we want the URL to change to '/' without jump
+    window.history.pushState(null, "", "/");
+    
+    const startY = window.scrollY;
+    if (startY === 0) return;
+    
+    const duration = 1500; // 1.5 seconds for an extremely smooth, slow glide
+    const startTime = performance.now();
+
+    // Easing function: cubic ease-in-out
+    const easeInOutCubic = (t: number) => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    const step = (currentTime: number) => {
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      
+      window.scrollTo(0, startY * (1 - easeInOutCubic(progress)));
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+
+    requestAnimationFrame(step);
+  };
+
   // When the menu is open its background is blue, so always use light styling
   const lightUI = isDarkTheme || isOpen;
 
@@ -76,8 +109,8 @@ export default function Navbar() {
           {/* Logo Left */}
           <Link
             href="/"
-            onClick={() => setIsOpen(false)}
-            className="flex items-center gap-2 transition-transform hover:scale-[1.02]"
+            onClick={smoothScrollToTop}
+            className="flex items-center gap-2 transition-transform hover:scale-[1.02] cursor-pointer"
           >
             <Image
               src={logoSrc}

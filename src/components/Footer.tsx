@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const FooterLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <a href={href} className="group relative inline-block w-fit text-white hover:text-orange-500 transition-colors duration-300 pb-1">
@@ -10,9 +12,18 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
 );
 
 export default function Footer() {
+  const container = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start end", "end end"]
+  });
+
+  // Animate from translateY(200px) down to 0 as the footer comes into view
+  const y = useTransform(scrollYProgress, [0, 1], [150, 0]);
+
   return (
-    <footer className="bg-[#2A3490] text-white py-16 px-6 md:px-16 font-sans">
-      <div className="max-w-7xl mx-auto">
+    <footer ref={container} className="relative overflow-hidden bg-[#2A3490] text-white py-16 px-6 md:px-16 font-sans">
+      <div className="relative z-10 max-w-7xl mx-auto">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
 
@@ -100,6 +111,16 @@ export default function Footer() {
               <span>Nepal</span>
             </div>
           </div>
+        </div>
+
+        {/* Giant Background Text */}
+        <div className="w-full flex justify-center items-center mt-8 md:mt-16 mb-8 select-none pointer-events-none">
+          <motion.span 
+            style={{ y }}
+            className="text-[16vw] md:text-[15vw] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/10 to-transparent"
+          >
+            SUTANTRA
+          </motion.span>
         </div>
 
         {/* Bottom Section */}

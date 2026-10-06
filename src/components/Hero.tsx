@@ -35,7 +35,7 @@ export default function Hero() {
 
             {/* Subtext and Pill Button on Bottom Right */}
             <div className="max-w-xl flex flex-col items-start lg:items-end space-y-6 pt-4">
-              <p className="text-base sm:text-lg md:text-xl font-normal text-slate-200/90 leading-relaxed drop-shadow">
+              <p className="text-base sm:text-lg md:text-xl font-normal text-slate-200 leading-relaxed drop-shadow">
                 For over <span className="text-orange-500 font-bold">5+ years</span>, Sutantra Technologies has been serving global enterprises with cutting-edge software engineering and digital transformation solutions from concept to completion.
               </p>
 
