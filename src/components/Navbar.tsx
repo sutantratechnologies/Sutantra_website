@@ -56,7 +56,7 @@ export default function Navbar() {
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Projects", href: "#projects" },
-    { label: "Capabilities", href: "#capabilities" },
+    { label: "Careers", href: "#careers" },
   ];
 
   // Custom extremely smooth scroll to top function

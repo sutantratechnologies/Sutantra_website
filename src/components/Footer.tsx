@@ -113,18 +113,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Giant Background Text */}
-        <div className="w-full flex justify-center items-center mt-8 md:mt-16 mb-8 select-none pointer-events-none">
-          <motion.span 
-            style={{ y }}
-            className="text-[16vw] md:text-[15vw] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/10 to-transparent"
-          >
-            SUTANTRA
-          </motion.span>
-        </div>
-
         {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white">
+        <div className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white relative z-10">
           <p>
             © {new Date().getFullYear()} Sutantra Technologies Pvt. Ltd.
           </p>
@@ -132,6 +122,16 @@ export default function Footer() {
             Terms & Conditions
             <span className="absolute left-0 bottom-0 w-full h-[1px] bg-white scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
           </a>
+        </div>
+
+        {/* Giant Background Text */}
+        <div className="w-full flex justify-center items-center mt-12 md:mt-16 select-none pointer-events-none">
+          <motion.span 
+            style={{ y }}
+            className="text-[16vw] md:text-[15vw] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent"
+          >
+            SUTANTRA
+          </motion.span>
         </div>
       </div>
     </footer>

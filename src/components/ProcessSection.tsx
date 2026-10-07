@@ -61,7 +61,7 @@ export default function ProcessSection() {
   const n = processSteps.length;
 
   useEffect(() => {
-    const measure = () => setCardW(window.innerWidth < 640 ? 260 : 320);
+    const measure = () => setCardW(window.innerWidth < 640 ? 300 : window.innerWidth < 1024 ? 420 : 520);
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
@@ -110,9 +110,9 @@ export default function ProcessSection() {
       className="relative bg-white"
       style={{ height: `${100 + (n - 1) * 80}vh` }}
     >
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+      <div className="sticky top-0 min-h-screen py-24 md:py-32 flex flex-col overflow-hidden">
         {/* Heading */}
-        <div className="max-w-7xl w-full mx-auto px-6 md:px-8 mb-12 md:mb-16 flex items-end justify-between gap-6">
+        <div className="max-w-7xl w-full mx-auto px-6 md:px-8 mb-8 md:mb-12 flex items-end justify-between gap-6">
           <h2 className="max-w-xl text-4xl md:text-5xl font-black tracking-tight leading-tight text-[#0F172A]">
             Our approach to flawless projects
           </h2>
@@ -141,24 +141,26 @@ export default function ProcessSection() {
               return (
                 <article
                   key={step.id}
-                  className="shrink-0 transition-opacity duration-500"
+                  className={`shrink-0 transition-all duration-500 rounded-2xl overflow-hidden border ${
+                    isActive ? "border-[#2A3490] shadow-lg" : "border-slate-200"
+                  }`}
                   style={{ width: cardW, opacity: i < active ? 0.45 : 1 }}
                 >
                   {/* Header bar */}
                   <div
-                    className={`h-16 px-5 flex items-center justify-between transition-colors duration-500 ${
+                    className={`h-20 px-6 flex items-center justify-between transition-colors duration-500 ${
                       isActive ? "bg-[#2A3490]" : "bg-[#E5E6E9]"
                     }`}
                   >
                     <h3
-                      className={`text-[11px] sm:text-xs font-extrabold tracking-wider uppercase transition-colors duration-500 ${
+                      className={`text-xs sm:text-sm font-extrabold tracking-wider uppercase transition-colors duration-500 ${
                         isActive ? "text-white" : "text-[#0F172A]"
                       }`}
                     >
                       {step.title}
                     </h3>
                     <span
-                      className={`text-xs font-bold tabular-nums transition-colors duration-500 ${
+                      className={`text-sm sm:text-base font-bold tabular-nums transition-colors duration-500 ${
                         isActive ? "text-white/60" : "text-slate-400"
                       }`}
                     >
@@ -167,33 +169,33 @@ export default function ProcessSection() {
                   </div>
 
                   {/* Body */}
-                  <div className="px-5 pt-6">
+                  <div className="px-6 pt-8 pb-10">
                     <p
-                      className={`text-[13px] leading-relaxed mb-5 transition-colors duration-500 ${
+                      className={`text-sm sm:text-base leading-relaxed mb-6 transition-colors duration-500 ${
                         isActive ? "text-slate-700" : "text-slate-400"
                       }`}
                     >
                       {step.summary}
                     </p>
-                    <ul className="space-y-3">
+                    <ul className="space-y-4">
                       {step.items.map((item) => (
                         <li
                           key={item}
-                          className={`flex items-start gap-3 text-[13px] transition-colors duration-500 ${
+                          className={`flex items-start gap-3 text-sm sm:text-base transition-colors duration-500 ${
                             isActive ? "text-slate-600" : "text-slate-400"
                           }`}
                         >
                           <span
-                            className={`mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full transition-colors duration-500 ${
+                            className={`mt-[7px] h-2 w-2 shrink-0 rounded-full transition-colors duration-500 ${
                               isActive ? "bg-orange-500" : "bg-slate-300"
                             }`}
-                          />
+                           />
                           {item}
                         </li>
                       ))}
                     </ul>
                     <div
-                      className={`mt-6 inline-block border px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-colors duration-500 ${
+                      className={`mt-8 inline-block border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors duration-500 rounded-md ${
                         isActive
                           ? "border-[#2A3490] text-[#2A3490]"
                           : "border-slate-200 text-slate-400"

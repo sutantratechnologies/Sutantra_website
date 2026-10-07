@@ -1,40 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-
-const Pill = ({
-  active,
-  children,
-  onClick
-}: {
-  active: boolean;
-  children: React.ReactNode;
-  onClick: () => void
-}) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className={`group relative overflow-hidden px-5 py-2.5 rounded-full border text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 ${active
-        ? "border-white shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-        : "border-white/20 text-slate-300"
-      }`}
-  >
-    {/* Bottom-to-top white fill */}
-    <span 
-      className={`absolute inset-0 w-full h-full bg-white transition-transform duration-300 ease-out origin-bottom ${
-        active ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"
-      }`} 
-    />
-    <span 
-      className={`relative z-10 transition-colors duration-300 ${
-        active ? "text-[#2A3490]" : "group-hover:text-[#2A3490]"
-      }`}
-    >
-      {children}
-    </span>
-  </button>
-);
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const InputField = ({ label, type, placeholder, required }: { label: string; type: string; placeholder: string; required?: boolean }) => (
   <div className="relative group w-full">
@@ -49,15 +16,92 @@ const InputField = ({ label, type, placeholder, required }: { label: string; typ
     />
   </div>
 );
+const TextAreaField = ({ label, placeholder, required }: { label: string; placeholder: string; required?: boolean }) => (
+  <div className="relative group w-full md:col-span-2">
+    <label className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 text-slate-400 group-focus-within:text-white transition-colors block">
+      {label} {required && <span className="text-orange-500">*</span>}
+    </label>
+    <textarea 
+      placeholder={placeholder}
+      rows={4}
+      className="w-full bg-transparent border-b border-white/20 pb-3 text-sm sm:text-base text-white placeholder-white/30 focus:outline-none focus:border-white transition-colors resize-none"
+      required={required}
+    />
+  </div>
+);
+
+const SelectField = ({ label, options, required }: { label: string; options: string[]; required?: boolean }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("");
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative group w-full md:col-span-2" ref={dropdownRef}>
+      <label className="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 text-slate-400 group-focus-within:text-white transition-colors block">
+        {label} {required && <span className="text-orange-500">*</span>}
+      </label>
+      
+      {/* Custom select trigger */}
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full bg-transparent border-b border-white/20 pb-3 text-sm sm:text-base text-white focus:outline-none focus:border-white transition-colors cursor-pointer flex items-center justify-between"
+      >
+        <span className={selected ? "text-white" : "text-white/30"}>
+          {selected || "Select a service..."}
+        </span>
+        <svg 
+          width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          className={`transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+        >
+          <path d="M1 1L6 6L11 1" />
+        </svg>
+      </div>
+
+      {/* Hidden input to store value for the form submission */}
+      <input type="hidden" name={label.toLowerCase()} value={selected} required={required} />
+
+      {/* Custom dropdown menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute z-50 top-full left-0 w-full mt-2 bg-[#2A3490]/95 backdrop-blur-xl border border-white/20 rounded-xl overflow-hidden shadow-2xl"
+          >
+            {options.map((opt) => (
+              <div
+                key={opt}
+                onClick={() => {
+                  setSelected(opt);
+                  setIsOpen(false);
+                }}
+                className={`px-5 py-3 text-sm sm:text-base cursor-pointer transition-colors ${
+                  selected === opt ? "bg-white text-[#2A3490] font-bold" : "text-white hover:bg-white/10"
+                }`}
+              >
+                {opt}
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default function ContactSection() {
-  const [selectedServices, setSelectedServices] = useState<string[]>([]);
-
-  const toggleSelection = (value: string) => {
-    setSelectedServices((prev) =>
-      prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-    );
-  };
 
   return (
     <section id="contact" className="relative py-24 md:py-32 px-6 md:px-16 bg-[#2A3490] text-white overflow-hidden">
@@ -77,23 +121,8 @@ export default function ContactSection() {
               Together.
             </h2>
             <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed mb-12 max-w-lg">
-              Partner with us to engineer scalable software solutions that drive real impact. Select the services you need below.
+              Partner with us to engineer scalable software solutions that drive real impact. Fill out the form to get started.
             </p>
-
-            <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] mb-6 text-white">Services of Interest</h3>
-              <div className="flex flex-wrap gap-3">
-                {["Web App", "Mobile App", "UI / UX Design", "Cloud Infra", "AI Solutions"].map((item) => (
-                  <Pill
-                    key={item}
-                    active={selectedServices.includes(item)}
-                    onClick={() => toggleSelection(item)}
-                  >
-                    {item}
-                  </Pill>
-                ))}
-              </div>
-            </div>
           </motion.div>
 
           {/* Right Column: Form */}
@@ -105,10 +134,16 @@ export default function ContactSection() {
           >
             <form className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 relative z-10">
-                <InputField label="Name" type="text" placeholder="John Doe" required />
-                <InputField label="Email" type="email" placeholder="john@example.com" required />
-                <InputField label="Phone" type="tel" placeholder="+1 (555) 000-0000" required />
+                <InputField label="Name" type="text" placeholder="Sutantra Technologies" required />
+                <InputField label="Email" type="email" placeholder="hello@sutantratechnology.com" required />
+                <InputField label="Phone" type="tel" placeholder="+977 987-6543210" required />
                 <InputField label="Company" type="text" placeholder="Your Company Ltd." />
+                <SelectField 
+                  label="Service of Interest" 
+                  options={["Web App", "Mobile App", "UI / UX Design", "Cloud Infra", "AI Solutions"]} 
+                  required 
+                />
+                <TextAreaField label="Message" placeholder="Tell us about your project..." required />
               </div>
 
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
