@@ -53,14 +53,20 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
-    { label: "Careers", href: "#careers" },
+    { label: "About", href: "/#about" },
+    { label: "Services", href: "/#services" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Careers", href: "/#careers" },
   ];
 
   // Custom extremely smooth scroll to top function
   const smoothScrollToTop = (e: React.MouseEvent) => {
+    if (typeof window !== "undefined" && window.location.pathname !== "/") {
+      // Let Next.js handle normal navigation if we are not on the home page
+      setIsOpen(false);
+      return;
+    }
+
     e.preventDefault();
     setIsOpen(false);
     
@@ -105,7 +111,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isOpen ? "" : "backdrop-blur-md"
           }`}
       >
-        <div className="relative max-w-7xl mx-auto flex items-center justify-between px-4 py-4 md:px-8">
+        <div className="relative max-w-7xl mx-auto flex items-center justify-between px-4 py-4 md:px-8 lg:px-0">
           {/* Logo Left */}
           <Link
             href="/"
@@ -119,6 +125,7 @@ export default function Navbar() {
               height={42}
               className="h-8 md:h-10 w-auto object-contain transition-all duration-300"
               priority
+              loading="eager"
             />
           </Link>
 
@@ -157,7 +164,7 @@ export default function Navbar() {
             </button>
 
             <Link
-              href="#contact"
+              href="/#contact"
               className={`hidden md:block group relative overflow-hidden px-6 py-2.5 rounded-full font-bold tracking-wide transition-colors duration-300 ${isDarkTheme ? "bg-white text-[#2A3490]" : "bg-[#2A3490] text-white"
                 }`}
             >
@@ -197,12 +204,12 @@ export default function Navbar() {
 
           {/* Sub Links (2 Column Grid) */}
           <div className="grid grid-cols-2 gap-y-4 gap-x-4 mb-8">
-            <Link href="#web" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">WEB APPS</Link>
-            <Link href="#mobile" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">MOBILE APPS</Link>
-            <Link href="#cloud" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">CLOUD INFRA</Link>
-            <Link href="#ai" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">AI SOLUTIONS</Link>
-            <Link href="#enterprise" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">ENTERPRISE</Link>
-            <Link href="#blog" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">BLOG</Link>
+            <Link href="/#web" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">WEB APPS</Link>
+            <Link href="/#mobile" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">MOBILE APPS</Link>
+            <Link href="/#cloud" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">CLOUD INFRA</Link>
+            <Link href="/#ai" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">AI SOLUTIONS</Link>
+            <Link href="/#enterprise" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">ENTERPRISE</Link>
+            <Link href="/#blog" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">BLOG</Link>
           </div>
         </div>
 

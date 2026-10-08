@@ -1,21 +1,6 @@
 import React from "react";
-
-const projects = [
-  {
-    id: 1,
-    title: "First in Country: Swift Pro Home Lift",
-    description: "Southern Lifts installed the first Swift Pro home lift in Victoria, providing a modern and efficient solution for residential lift access.",
-    tags: ["Swift Pro", "Residential"],
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=1600",
-  },
-  {
-    id: 2,
-    title: "Access upgrades for Architectural Style",
-    description: "Southern Lifts installed a Swift Pro home lift into an existing stairwell, providing a seamless and stylish solution for the client.",
-    tags: ["Swift Pro", "Retrofit", "Architectural"],
-    image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1600",
-  },
-];
+import Link from "next/link";
+import { projects } from "@/data/projects";
 
 export default function FeaturedProjects() {
   return (
@@ -41,14 +26,15 @@ export default function FeaturedProjects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
           {projects.map((project, index) => (
-            <div
+            <Link
               key={project.id}
-              className={`group relative cursor-pointer ${index === 1 ? "md:mt-32" : ""
+              href={`/projects/${project.slug}`}
+              className={`group relative cursor-pointer block ${index === 1 ? "md:mt-32" : ""
                 }`}
             >
-              {/* Image Container with Cyan Matte and White Border */}
-              <div className="border-[10px] border-white transition-transform duration-500 group-hover:-translate-y-2">
-                <div className="relative aspect-[4/3] overflow-hidden">
+              {/* Image Container with Glassmorphism Effect */}
+              <div className="p-2 md:p-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl transition-transform duration-500 group-hover:-translate-y-2">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -74,11 +60,11 @@ export default function FeaturedProjects() {
                 <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#00d2ff] transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-white/60 text-sm mt-3 leading-relaxed">
+                <p className="text-white/60 text-sm mt-3 leading-relaxed line-clamp-3">
                   {project.description}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

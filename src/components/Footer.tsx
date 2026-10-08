@@ -35,6 +35,8 @@ export default function Footer() {
               width={180}
               height={42}
               className="h-10 w-auto object-contain mb-2"
+              priority
+              loading="eager"
             />
             <div className="flex flex-col gap-2 text-white/90 font-medium">
               <a href="tel:+9779867139612" className="hover:text-orange-400 transition-colors">
