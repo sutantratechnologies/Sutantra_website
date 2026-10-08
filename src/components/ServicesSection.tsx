@@ -35,7 +35,7 @@ export default function ServicesSection() {
             We offer a comprehensive range of design and development services tailored to your needs.
           </p>
           <a 
-            href="#all-services" 
+            href="/services" 
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-black border-b-2 border-black pb-1 hover:text-[#2A3490] hover:border-[#2A3490] transition-colors"
           >
             WHAT WE DO <span className="font-mono text-sm font-normal">›</span>
@@ -84,7 +84,7 @@ export default function ServicesSection() {
               {/* Action Button Column */}
               <div className="col-span-1 md:col-span-2 flex justify-start md:justify-end items-start mt-4 md:mt-0">
                 <a 
-                  href={`#service-${service.id}`}
+                  href="/services"
                   className="w-12 h-12 rounded-full bg-[#171717] text-white flex items-center justify-center group-hover:bg-[#2A3490] hover:bg-[#2A3490] transition-colors shadow-lg duration-300"
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -29,7 +29,7 @@ export default function AboutSection() {
               For over 5 years we&apos;ve been building the best software solutions for enterprises right here and globally. We&apos;re able to offer the perfect digital platform for your business, not just through how it looks but right down to how it operates. From robust microservices to fully automated AI designs, we match the right technology to your business needs.
             </p>
             <a
-              href="#about-more"
+              href="/about"
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-black border-b border-black pb-1 hover:text-[#2A3490] hover:border-[#2A3490] transition-colors"
             >
               About Us <span className="font-mono text-base font-normal">↗</span>
