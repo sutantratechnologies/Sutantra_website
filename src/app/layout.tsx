@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
-import Preloader from "@/components/Preloader";
 
 export const metadata: Metadata = {
   title: "SUTANTRA TECHNOLOGIES | Reliable Systems. Remarkable Innovation.",
@@ -123,7 +122,6 @@ export default function RootLayout({
           `}
         </Script>
 
-        <Preloader />
         <SmoothScrolling>
           {children}
         </SmoothScrolling>

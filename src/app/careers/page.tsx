@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CtaBanner from "@/components/CtaBanner";
 import Link from "next/link";
 
 export const metadata = {
@@ -31,15 +32,14 @@ export default function CareersPage() {
       <section className="py-24 px-6 md:px-16 bg-[#2A3490] text-white flex-grow min-h-[50vh]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase mb-12">Open Positions</h2>
-          
+
           {jobs.length > 0 ? (
             <div className="flex flex-col">
               {jobs.map((job, index) => (
-                <div 
-                  key={job.id} 
-                  className={`flex flex-col md:flex-row items-start md:items-center justify-between py-10 group ${
-                    index === 0 ? "border-t border-white/20" : "border-t border-white/20"
-                  }`}
+                <div
+                  key={job.id}
+                  className={`flex flex-col md:flex-row items-start md:items-center justify-between py-10 group ${index === 0 ? "border-t border-white/20" : "border-t border-white/20"
+                    }`}
                 >
                   <div className="flex flex-col mb-6 md:mb-0">
                     <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-[#00d2ff] transition-colors mb-2">
@@ -52,7 +52,7 @@ export default function CareersPage() {
                     </div>
                   </div>
 
-                  <Link 
+                  <Link
                     href="/#contact"
                     className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/30 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[#2A3490] transition-colors duration-300"
                   >
@@ -67,35 +67,14 @@ export default function CareersPage() {
               <p className="text-white/70 text-lg">There are currently no open positions. Please check back later.</p>
             </div>
           )}
-          
+
           <div className="mt-20">
             {/* Kept empty to separate from CTA */}
           </div>
         </div>
       </section>
 
-      {/* Full Width CTA Section */}
-      <section 
-        className="relative py-32 px-6 md:px-16 bg-[#2A3490] bg-cover bg-center bg-blend-multiply flex flex-col justify-center min-h-[60vh]"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80')" }}
-      >
-        <div className="absolute inset-0 bg-[#2A3490]/80"></div>
-        <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl md:text-5xl lg:text-[5rem] font-black uppercase leading-[0.9] tracking-tighter text-white mb-6">
-              SEND US THE SPACE<br />
-              YOU'VE GOT
-            </h2>
-            <p className="text-white/70 text-sm md:text-base leading-relaxed max-w-md mb-10">
-              Plans, a photo of the stairwell, or just an address. That's usually enough to tell you whether it's straightforward or interesting — and roughly what it costs — before anyone visits.
-            </p>
-            <a href="mailto:info@sutantratechnology.com" className="inline-flex items-center justify-center px-8 py-4 border border-white/50 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs text-white hover:bg-white hover:text-[#2A3490] transition-colors duration-300">
-              START A CONVERSATION
-            </a>
-          </div>
-          <div></div>
-        </div>
-      </section>
+      <CtaBanner />
 
       <Footer />
     </main>
