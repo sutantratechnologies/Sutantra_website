@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -53,10 +54,10 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { label: "About", href: "/#about" },
-    { label: "Services", href: "/#services" },
-    { label: "Projects", href: "/#projects" },
-    { label: "Careers", href: "/#careers" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Projects", href: "/projects" },
+    { label: "Careers", href: "/careers" },
   ];
 
   // Custom extremely smooth scroll to top function
@@ -100,6 +101,7 @@ export default function Navbar() {
 
   // When the menu is open its background is blue, so always use light styling
   const lightUI = isDarkTheme || isOpen;
+  const pathname = usePathname();
 
   const textColor = lightUI ? "text-white" : "text-[#171717]";
   const textHover = lightUI ? "hover:text-orange-400" : "hover:text-orange-600";
@@ -135,11 +137,10 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`group relative inline-block pb-1 text-xs font-bold tracking-widest uppercase transition-colors duration-200 hover:text-orange-500 ${isDarkTheme ? "text-white" : "text-[#171717]"
-                  }`}
+                className={`group relative inline-block pb-1 text-xs font-bold tracking-widest uppercase transition-colors duration-200 hover:text-orange-500 ${pathname === item.href ? "text-orange-500" : isDarkTheme ? "text-white" : "text-[#171717]" }`}
               >
                 {item.label}
-                <span className="absolute left-0 bottom-0 w-full h-[1px] bg-orange-500 scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
+                <span className={`absolute left-0 bottom-0 w-full h-[1px] bg-orange-500 ${pathname === item.href ? "scale-x-100 origin-left" : "scale-x-0 origin-right"} transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left`} />
               </Link>
             ))}
           </nav>
@@ -164,7 +165,7 @@ export default function Navbar() {
             </button>
 
             <Link
-              href="/#contact"
+              href="/contact"
               className={`hidden md:block group relative overflow-hidden px-6 py-2.5 rounded-full font-bold tracking-wide transition-colors duration-300 ${isDarkTheme ? "bg-white text-[#2A3490]" : "bg-[#2A3490] text-white"
                 }`}
             >

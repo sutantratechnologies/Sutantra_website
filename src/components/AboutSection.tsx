@@ -13,7 +13,7 @@ export default function AboutSection() {
               We are your complete digital solution partner specialising in AI, cloud architecture, and enterprise platforms.
             </h2>
             <a
-              href="#contact"
+              href="/contact"
               className="group relative overflow-hidden inline-flex items-center gap-2 rounded-full border border-black/20 px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-black transition-colors duration-300"
             >
               <span className="absolute inset-0 w-full h-full bg-black scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
@@ -29,7 +29,7 @@ export default function AboutSection() {
               For over 5 years we&apos;ve been building the best software solutions for enterprises right here and globally. We&apos;re able to offer the perfect digital platform for your business, not just through how it looks but right down to how it operates. From robust microservices to fully automated AI designs, we match the right technology to your business needs.
             </p>
             <a
-              href="#about-more"
+              href="/about"
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-black border-b border-black pb-1 hover:text-[#2A3490] hover:border-[#2A3490] transition-colors"
             >
               About Us <span className="font-mono text-base font-normal">↗</span>

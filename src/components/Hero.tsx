@@ -80,7 +80,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
         >
           <a
-            href="#contact"
+            href="/contact"
             className="w-full sm:w-auto group relative overflow-hidden rounded-full bg-orange-500 px-8 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-[0_0_40px_-10px_rgba(249,115,22,0.5)] transition-all hover:scale-105 hover:shadow-[0_0_60px_-15px_rgba(249,115,22,0.7)]"
           >
             <span className="absolute inset-0 w-full h-full bg-white scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />

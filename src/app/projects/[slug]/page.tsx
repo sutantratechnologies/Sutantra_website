@@ -93,17 +93,19 @@ export default async function ProjectDetailPage({ params }: Props) {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <a 
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute bottom-6 right-6 inline-flex items-center justify-center px-8 py-4 bg-white text-[#2A3490] rounded-full font-bold hover:scale-105 transition-transform shadow-lg z-10"
-              >
-                Live Preview
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
+              {project.link && (
+                <a 
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-6 right-6 inline-flex items-center justify-center px-8 py-4 bg-white text-[#2A3490] rounded-full font-bold hover:scale-105 transition-transform shadow-lg z-10"
+                >
+                  Live Preview
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              )}
             </div>
           </div>
         </div>
