@@ -10,22 +10,24 @@ export const metadata = {
 const services = [
   {
     id: "01",
-    title: "AI & Machine Learning",
-    description: "Not sure which AI model is right for your project? Our consultation services help you navigate options, compliance, and budgeting. We provide expert guidance from initial planning through to final selection.",
-    tags: ["EXPERT GUIDANCE", "PREDICTIVE MODELS", "AUTOMATION"],
+    title: "CONSULTATION",
+    description: "Come to Braeside or we come to you. What the space allows, what compliance demands, and an honest budget — before anything is ordered.",
   },
   {
     id: "02",
-    title: "Cloud Architecture",
-    description: "We work with you through a range of cloud providers to customize your infrastructure from floor to ceiling to fit your scale. From microservices to databases and security, we make our solutions suit your space.",
-    tags: ["CUSTOM DESIGN", "AWS / GCP", "SCALABILITY"],
+    title: "DESIGN",
+    description: "Flooring, wall panels, lighting, handrails, operating panels, door style — the car is specified like a room, not a machine.",
   },
   {
     id: "03",
-    title: "Enterprise Platforms",
-    description: "Our expert team collaborate closely with your project managers to fit within your project goals and timelines. We're experts in high-performance web standards and enterprise architecture.",
-    tags: ["WEB DEVELOPMENT", "SYSTEM INTEGRATION", "MOBILE APPS"],
+    title: "INSTALLATION",
+    description: "In-house project managers talk directly to your builder. Mechanical, electrical, testing and sign-off from a single team — and where possible the lift arrives fully assembled and is craned into place, cutting weeks off the program.",
   },
+  {
+    id: "04",
+    title: "RETROFIT & REPLACEMENT",
+    description: "Outdated, non-compliant or worn out. With multiple manufacturers to draw on, we can usually fit the existing shaft without major building works.",
+  }
 ];
 
 export default function ServicesPage() {
@@ -45,61 +47,26 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Main Content - Blue Background */}
-      <section className="py-24 px-6 md:px-16 bg-[#2A3490] text-white flex-grow min-h-[50vh]">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col">
-            {services.map((service, index) => (
+      {/* Main Content - Grid Layout */}
+      <section className="py-16 px-6 md:px-16 bg-white flex-grow">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            {services.map((service) => (
               <div 
                 key={service.id} 
-                className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 py-12 md:py-16 group ${
-                  index === 0 ? "border-t border-white/20" : "border-t border-white/20"
-                }`}
+                className="bg-[#f7f8fa] p-10 md:p-14 flex flex-col items-start transition-transform duration-300 hover:-translate-y-1"
               >
-                {/* Number Column */}
-                <div className="col-span-1 md:col-span-2">
-                  <div className="flex flex-col text-white/50 font-medium">
-                    <span className="text-lg tracking-wide">{service.id}</span>
-                    <span className="text-lg leading-4 mt-1 opacity-50 font-serif">. .</span>
-                  </div>
-                </div>
-
-                {/* Content Column */}
-                <div className="col-span-1 md:col-span-8 flex flex-col items-start">
-                  <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-white group-hover:text-[#00d2ff] transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-white/70 text-sm md:text-base leading-relaxed max-w-2xl mb-8">
-                    {service.description}
-                  </p>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-3">
-                    {service.tags.map((tag) => (
-                      <span 
-                        key={tag} 
-                        className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-bold tracking-widest uppercase text-white transition-colors group-hover:bg-white/20"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Action Button Column */}
-                <div className="col-span-1 md:col-span-2 flex justify-start md:justify-end items-start mt-4 md:mt-0">
-                  <a 
-                    href="/#contact"
-                    className="w-12 h-12 rounded-full bg-white text-[#2A3490] flex items-center justify-center group-hover:scale-110 hover:bg-[#00d2ff] hover:text-white transition-all shadow-lg duration-300"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                    </svg>
-                  </a>
-                </div>
+                <span className="text-[5rem] md:text-[6rem] font-black text-slate-200 leading-none mb-8 tracking-tighter select-none">
+                  {service.id}
+                </span>
+                <h3 className="text-sm md:text-base font-bold tracking-[0.15em] uppercase text-[#111827] mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-sm">
+                  {service.description}
+                </p>
               </div>
             ))}
-            <div className="border-t border-white/20" />
           </div>
         </div>
       </section>

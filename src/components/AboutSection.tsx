@@ -13,7 +13,7 @@ export default function AboutSection() {
               We are your complete digital solution partner specialising in AI, cloud architecture, and enterprise platforms.
             </h2>
             <a
-              href="#contact"
+              href="/contact"
               className="group relative overflow-hidden inline-flex items-center gap-2 rounded-full border border-black/20 px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-black transition-colors duration-300"
             >
               <span className="absolute inset-0 w-full h-full bg-black scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />

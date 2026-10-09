@@ -164,7 +164,7 @@ export default function Navbar() {
             </button>
 
             <Link
-              href="/#contact"
+              href="/contact"
               className={`hidden md:block group relative overflow-hidden px-6 py-2.5 rounded-full font-bold tracking-wide transition-colors duration-300 ${isDarkTheme ? "bg-white text-[#2A3490]" : "bg-[#2A3490] text-white"
                 }`}
             >

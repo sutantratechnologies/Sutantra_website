@@ -7,13 +7,12 @@ export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // (Temporarily disabled session storage for testing so it runs on every refresh)
-    // const hasVisited = sessionStorage.getItem("hasVisited");
-    // if (hasVisited) {
-    //   setIsLoading(false);
-    //   return;
-    // }
-    // sessionStorage.setItem("hasVisited", "true");
+    const hasVisited = sessionStorage.getItem("hasVisited");
+    if (hasVisited) {
+      setIsLoading(false);
+      return;
+    }
+    sessionStorage.setItem("hasVisited", "true");
 
     // Simulate loading time
     const timer = setTimeout(() => {
@@ -34,8 +33,23 @@ export default function Preloader() {
             transition: { duration: 1, ease: [0.76, 0, 0.24, 1], delay: 0.2 } 
           }}
         >
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-10 pointer-events-none z-0">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="pattern_scribble_preloader" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                  <path d="M15 15 C 20 5, 40 5, 45 15 S 40 30, 30 30 S 15 25, 15 15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  <circle cx="50" cy="50" r="3" fill="currentColor" />
+                  <circle cx="10" cy="50" r="2" fill="currentColor" />
+                  <path d="M45 45 L 55 55 M 55 45 L 45 55" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#pattern_scribble_preloader)" className="text-white" />
+            </svg>
+          </div>
+
           {/* Background Ambient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] bg-white/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50vw] h-[50vw] bg-white/10 rounded-full blur-[100px] pointer-events-none z-0" />
 
           <div className="relative z-10 flex flex-col items-center justify-center w-full px-6">
             

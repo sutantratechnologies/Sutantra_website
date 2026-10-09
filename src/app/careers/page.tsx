@@ -68,12 +68,32 @@ export default function CareersPage() {
             </div>
           )}
           
-          <div className="mt-20 text-center">
-            <p className="text-white/60 mb-6">Don't see a role that fits? Send us your resume anyway.</p>
-            <a href="mailto:careers@sutantratechnology.com" className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#2A3490] rounded-full font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform shadow-lg">
-              Email Us
+          <div className="mt-20">
+            {/* Kept empty to separate from CTA */}
+          </div>
+        </div>
+      </section>
+
+      {/* Full Width CTA Section */}
+      <section 
+        className="relative py-32 px-6 md:px-16 bg-[#2A3490] bg-cover bg-center bg-blend-multiply flex flex-col justify-center min-h-[60vh]"
+        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80')" }}
+      >
+        <div className="absolute inset-0 bg-[#2A3490]/80"></div>
+        <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-4xl md:text-5xl lg:text-[5rem] font-black uppercase leading-[0.9] tracking-tighter text-white mb-6">
+              SEND US THE SPACE<br />
+              YOU'VE GOT
+            </h2>
+            <p className="text-white/70 text-sm md:text-base leading-relaxed max-w-md mb-10">
+              Plans, a photo of the stairwell, or just an address. That's usually enough to tell you whether it's straightforward or interesting — and roughly what it costs — before anyone visits.
+            </p>
+            <a href="mailto:info@sutantratechnology.com" className="inline-flex items-center justify-center px-8 py-4 border border-white/50 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs text-white hover:bg-white hover:text-[#2A3490] transition-colors duration-300">
+              START A CONVERSATION
             </a>
           </div>
+          <div></div>
         </div>
       </section>
 

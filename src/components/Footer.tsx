@@ -18,14 +18,11 @@ export default function Footer() {
     offset: ["start end", "end end"]
   });
 
-  // Animate from translateY(200px) down to 0 as the footer comes into view
-  const y = useTransform(scrollYProgress, [0, 1], [150, 0]);
-
   return (
-    <footer ref={container} className="relative overflow-hidden bg-[#2A3490] text-white py-16 px-6 md:px-16 font-sans">
+    <footer ref={container} className="relative overflow-hidden bg-[#2A3490] text-white py-10 px-6 md:px-16 font-sans">
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-10">
 
           {/* Left Column: Logo & Contact Info */}
           <div className="col-span-1 md:col-span-4 flex flex-col items-start gap-6">
@@ -34,7 +31,7 @@ export default function Footer() {
               alt="SUTANTRA TECHNOLOGIES"
               width={180}
               height={42}
-              className="h-10 w-auto object-contain mb-2"
+              className="h-10 w-auto object-contain mb-2" 
               priority
               loading="eager"
             />
@@ -47,7 +44,7 @@ export default function Footer() {
               </a>
             </div>
             <a
-              href="#contact"
+              href="/contact"
               className="mt-4 group relative overflow-hidden px-6 py-2.5 rounded-full border border-white/40 text-sm font-semibold tracking-wide text-white transition-colors duration-300"
             >
               <span className="absolute inset-0 w-full h-full bg-white scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
@@ -127,7 +124,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white relative z-10">
+        <div className="mt-10 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white relative z-10">
           <p>
             © {new Date().getFullYear()} Sutantra Technologies Pvt. Ltd.
           </p>
@@ -135,16 +132,6 @@ export default function Footer() {
             Terms & Conditions
             <span className="absolute left-0 bottom-0 w-full h-[1px] bg-white scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
           </a>
-        </div>
-
-        {/* Giant Background Text */}
-        <div className="w-full flex justify-center items-center mt-12 md:mt-16 select-none pointer-events-none">
-          <motion.span 
-            style={{ y }}
-            className="text-[16vw] md:text-[15vw] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent"
-          >
-            SUTANTRA
-          </motion.span>
         </div>
       </div>
     </footer>
