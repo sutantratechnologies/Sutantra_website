@@ -4,6 +4,10 @@ import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.sutantratechnology.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: "SUTANTRA TECHNOLOGIES | Reliable Systems. Remarkable Innovation.",
   description: "Empowering global enterprises with cutting-edge software engineering, AI systems, and cloud architecture.",
   icons: {
@@ -15,6 +19,14 @@ export const metadata: Metadata = {
     shortcut: "/favicon_io/favicon.ico",
   },
   manifest: "/favicon_io/site.webmanifest",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://www.sutantratechnology.com",
+    siteName: "SUTANTRA TECHNOLOGIES",
+    title: "SUTANTRA TECHNOLOGIES | Reliable Systems. Remarkable Innovation.",
+    description: "Empowering global enterprises with cutting-edge software engineering, AI systems, and cloud architecture.",
+  },
 };
 
 export default function RootLayout({
@@ -27,8 +39,8 @@ export default function RootLayout({
     "@type": "Organization",
     "name": "Sutantra Technologies",
     "legalName": "Sutantra Technologies",
-    "url": "https://sutantratechnology.com",
-    "logo": "https://sutantratechnology.com",
+    "url": "https://www.sutantratechnology.com",
+    "logo": "https://www.sutantratechnology.com/logo_light.svg",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Butwal",
@@ -36,9 +48,9 @@ export default function RootLayout({
       "addressCountry": "NP"
     },
     "sameAs": [
-      "https://linkedin.com",
-      "https://facebook.com",
-      "https://instagram.com"
+      "https://linkedin.com/company/sutantratechnology",
+      "https://facebook.com/sutantradigital",
+      "https://instagram.com/sutantratechnology"
     ]
   };
 
@@ -46,12 +58,12 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Sutantra Technologies",
-    "url": "https://sutantratechnology.com",
+    "url": "https://www.sutantratechnology.com",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://sutantratechnology.com{search_term_string}"
+        "urlTemplate": "https://www.sutantratechnology.com{search_term_string}"
       },
       "query-input": "required name=search_term_string"
     }
@@ -66,7 +78,7 @@ export default function RootLayout({
         "provider": {
           "@type": "Organization",
           "name": "Sutantra Technologies",
-          "url": "https://sutantratechnology.com"
+          "url": "https://www.sutantratechnology.com"
         },
         "description": "Custom enterprise software engineering, web application development, and system integrations tailored for modern digital transformation.",
         "areaServed": "Global"
@@ -77,7 +89,7 @@ export default function RootLayout({
         "provider": {
           "@type": "Organization",
           "name": "Sutantra Technologies",
-          "url": "https://sutantratechnology.com"
+          "url": "https://www.sutantratechnology.com"
         },
         "description": "Integration of intelligent workflows, generative AI frameworks, and advanced data analytics solutions.",
         "areaServed": "Global"

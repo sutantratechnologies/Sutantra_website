@@ -4,12 +4,24 @@ import Footer from "@/components/Footer";
 import CtaBanner from "@/components/CtaBanner";
 import Link from "next/link";
 
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Careers | SUTANTRA TECHNOLOGIES",
-  description: "Join our team at Sutantra Technologies.",
+  description: "Join our team at Sutantra Technologies. We are always looking for passionate talent.",
+  alternates: {
+    canonical: "/careers",
+  },
 };
 
-const jobs: any[] = [];
+interface JobPosition {
+  id: string | number;
+  title: string;
+  type: string;
+  location: string;
+}
+
+const jobs: JobPosition[] = [];
 
 export default function CareersPage() {
   return (
