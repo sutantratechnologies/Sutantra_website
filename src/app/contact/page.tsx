@@ -3,9 +3,14 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
 
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Contact Us | SUTANTRA TECHNOLOGIES",
-  description: "Get in touch with Sutantra Technologies.",
+  description: "Get in touch with Sutantra Technologies. Partner with us to engineer scalable software solutions that drive real impact.",
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default function ContactPage() {

@@ -6,6 +6,9 @@ import CtaBanner from "@/components/CtaBanner";
 export const metadata = {
   title: "Our Services | SUTANTRA TECHNOLOGIES",
   description: "Comprehensive range of design and development services.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 const services = [

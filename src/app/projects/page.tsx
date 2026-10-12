@@ -7,6 +7,9 @@ import ProjectsContent from "@/components/ProjectsContent";
 export const metadata = {
   title: "Our Work | SUTANTRA TECHNOLOGIES",
   description: "Browse our portfolio of digital products and web applications.",
+  alternates: {
+    canonical: "/projects",
+  },
 };
 
 export default function ProjectsPage() {

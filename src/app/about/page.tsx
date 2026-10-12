@@ -6,6 +6,9 @@ import CtaBanner from "@/components/CtaBanner";
 export const metadata = {
   title: "About Us | SUTANTRA TECHNOLOGIES",
   description: "Learn more about Sutantra Technologies and our digital engineering expertise.",
+  alternates: {
+    canonical: "/about",
+  },
 };
 
 const founders = [
@@ -51,7 +54,7 @@ export default function AboutPage() {
             ENTERPRISE<br/>DIGITAL ARCHITECTS
           </h1>
           <p className="text-base md:text-lg text-black/70 max-w-3xl font-medium mb-20 leading-relaxed">
-            We don't make the standard... we choose them. For years we've been building the best software solutions for enterprises right here and globally. From robust microservices to fully automated AI designs, we match the right technology to your business needs, without the Australian or US price tag.
+            We don&apos;t make the standard... we choose them. For years we&apos;ve been building the best software solutions for enterprises right here and globally. From robust microservices to fully automated AI designs, we match the right technology to your business needs, without the Australian or US price tag.
           </p>
 
           {/* Stats Grid */}
@@ -136,7 +139,7 @@ export default function AboutPage() {
             HOW A DEVELOPER GETS ON OUR LIST
           </h2>
           <p className="text-xs md:text-sm text-white/80 uppercase tracking-widest font-bold mb-16 border-b border-white/20 pb-8 inline-block pr-12">
-            Four questions. All four have to be Yes, or we don't code them.
+            Four questions. All four have to be Yes, or we don&apos;t code them.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-12">
@@ -145,7 +148,7 @@ export default function AboutPage() {
               <span className="text-sm font-bold tracking-widest mb-4 border-b border-white/30 pb-2 w-12">01.</span>
               <h4 className="text-sm font-bold uppercase tracking-wider mb-4 leading-tight">DOES IT FIT THE NEED?</h4>
               <p className="text-xs leading-relaxed text-white/70">
-                It's strictly business first. We verify whether the architecture can actually solve your problem or if it's over-engineered.
+                It&apos;s strictly business first. We verify whether the architecture can actually solve your problem or if it&apos;s over-engineered.
               </p>
             </div>
             
