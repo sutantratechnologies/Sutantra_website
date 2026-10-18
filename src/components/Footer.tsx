@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { usePathname } from "next/navigation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FaInstagram, FaLinkedinIn, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -16,10 +17,9 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
 
 export default function Footer() {
   const container = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "end end"]
-  });
+  const pathname = usePathname();
+  // Use dark logo on the dark footer background; could add full theme detection later
+  const logoSrc = "/dashin_white_logo.png";
 
   return (
     <footer ref={container} className="relative overflow-hidden bg-[#2A3490] text-white py-10 px-6 md:px-16 font-sans">
@@ -30,7 +30,7 @@ export default function Footer() {
           {/* Left Column: Logo & Contact Info */}
           <div className="col-span-1 md:col-span-4 flex flex-col items-start gap-6">
             <Image
-              src="/dashin_logo.png"
+              src={logoSrc}
               alt="SUTANTRA TECHNOLOGIES"
               width={180}
               height={60}
