@@ -105,7 +105,9 @@ export default function Navbar() {
 
   const textColor = lightUI ? "text-white" : "text-[#171717]";
   const textHover = lightUI ? "hover:text-orange-400" : "hover:text-orange-600";
-  const logoSrc = "/dashin_logo.png";
+  const logoSrc = lightUI
+    ? "/dashin_white_logo.png"
+    : "/dashin_dark_logo.png";
 
   return (
     <>
