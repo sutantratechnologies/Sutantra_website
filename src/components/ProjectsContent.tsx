@@ -293,7 +293,7 @@ export default function ProjectsContent() {
             OUR WORK.
           </h1>
           <p className="text-lg md:text-xl text-black/60 max-w-2xl font-medium">
-            Browse our portfolio of digital products, web applications, and mobile solutions.
+            Platforms, apps and brands we have designed and built — for sports associations, nonprofits, agencies and product teams.
           </p>
         </div>
       </section>
@@ -670,13 +670,13 @@ export default function ProjectsContent() {
                     >
                       {/* Image Container with Glassmorphism Effect */}
                       <div className="p-2 md:p-3 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:border-white/20 group-hover:bg-white/10">
-                        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-black/20">
+                        <div className="relative aspect-video overflow-hidden rounded-2xl bg-black/20">
                           <Image
                             src={project.image}
                             alt={project.title}
                             fill
                             sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            className="object-contain transition-transform duration-700 group-hover:scale-105"
                           />
 
                           {/* Top-right year/client badge */}

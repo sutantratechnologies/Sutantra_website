@@ -30,11 +30,11 @@ export default function Footer() {
           {/* Left Column: Logo & Contact Info */}
           <div className="col-span-1 md:col-span-4 flex flex-col items-start gap-6">
             <Image
-              src="/logo_light.svg"
+              src="/dashin_logo.png"
               alt="SUTANTRA TECHNOLOGIES"
               width={180}
-              height={42}
-              className="h-10 w-auto object-contain mb-2"
+              height={60}
+              className="h-12 w-auto object-contain mb-2"
               priority
               loading="eager"
             />
@@ -78,10 +78,11 @@ export default function Footer() {
                 Services
               </h3>
               <div className="flex flex-col gap-3 text-sm text-white/80">
-                <span className="pb-1">Web Development</span>
-                <span className="pb-1">App Development</span>
-                <span className="pb-1">AI Solutions</span>
-                <span className="pb-1">Cloud Services</span>
+                <FooterLink href="/services#web-development">Web Development</FooterLink>
+                <FooterLink href="/services#mobile-app-development">Mobile Apps</FooterLink>
+                <FooterLink href="/services#graphics-brand-design">Graphic Design</FooterLink>
+                <FooterLink href="/services#school-management-software">School Software</FooterLink>
+                <FooterLink href="/services#business-consultancy-systems">Business Systems</FooterLink>
               </div>
             </div>
           </div>

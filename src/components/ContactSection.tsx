@@ -150,9 +150,19 @@ export default function ContactSection() {
               Let&apos;s Build <br />
               Together.
             </h2>
-            <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed mb-12 max-w-lg">
-              Partner with us to engineer scalable software solutions that drive real impact. Fill out the form to get started.
+            <p className="text-slate-400 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-lg">
+              Website, mobile app, brand design or a custom system for your school or consultancy — tell us what you need and we&apos;ll reply within one working day with honest next steps.
             </p>
+
+            <div className="flex flex-col gap-3 text-sm font-medium text-white/80 mb-12">
+              <a href="tel:+9779867139612" className="hover:text-orange-400 transition-colors w-fit">
+                +977-9867139612
+              </a>
+              <a href="mailto:info@sutantratechnology.com" className="hover:text-orange-400 transition-colors w-fit">
+                info@sutantratechnology.com
+              </a>
+              <span className="text-white/50">Butwal, Lumbini Province, Nepal</span>
+            </div>
           </motion.div>
 
           {/* Right Column: Form / Success */}
@@ -211,7 +221,7 @@ export default function ContactSection() {
                     <SelectField
                       label="Service of Interest"
                       name="service"
-                      options={["Web App", "Mobile App", "UI / UX Design", "Cloud Infra", "AI Solutions"]}
+                      options={["Web Development", "Mobile App", "Graphic & Brand Design", "School Management Software", "Business / Consultancy Software", "Maintenance & Support"]}
                       required
                     />
                     <TextAreaField label="Message" placeholder="Tell us about your project..." required />
@@ -243,8 +253,8 @@ export default function ContactSection() {
 
                   <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
                     <p className="text-[10px] text-slate-400 max-w-[200px] leading-relaxed">
-                      <a href="#" className="underline hover:text-white transition-colors">Privacy Policy</a> &amp;{" "}
-                      <a href="#" className="underline hover:text-white transition-colors">Terms</a> apply.
+                      <a href="/terms" className="underline hover:text-white transition-colors">Terms &amp; Conditions</a>{" "}
+                      apply to every engagement.
                     </p>
 
                     <button

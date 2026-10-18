@@ -1,71 +1,92 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 
 const processSteps = [
   {
     id: "01",
     title: "DISCOVERY & STRATEGY",
-    summary: "We learn your business, users and constraints before writing a line of code.",
-    items: ["Requirements gathering", "Competitor analysis", "Technical feasibility review"],
+    summary: "We learn how your school, consultancy or business actually runs before writing a line of code.",
+    items: ["Workflow & form mapping", "Requirements gathering", "Scope & budget review"],
     deliverable: "Project roadmap",
   },
   {
     id: "02",
     title: "DESIGN & PROTOTYPING",
-    summary: "Ideas become clickable experiences you can test and approve early.",
-    items: ["Wireframing & UX mapping", "High-fidelity UI design", "Interactive prototyping"],
+    summary: "Ideas become clickable screens you can test and approve early — including your brand language.",
+    items: ["Wireframing & UX mapping", "Brand & UI design", "Interactive prototyping"],
     deliverable: "Approved prototype",
   },
   {
     id: "03",
     title: "DEVELOPMENT",
     summary: "Clean, modular engineering delivered in short, reviewable sprints.",
-    items: ["Frontend & Backend engineering", "API integrations", "Scalable cloud architecture"],
+    items: ["Web & mobile engineering", "Payments & SMS integrations", "Roles, permissions & reporting"],
     deliverable: "Working product builds",
   },
   {
     id: "04",
     title: "QA & TESTING",
-    summary: "Every feature is stress-tested for bugs, speed and security.",
-    items: ["Automated & manual testing", "Performance optimization", "Security auditing"],
+    summary: "Every feature is tested on real data, real devices and slow connections.",
+    items: ["Manual & automated testing", "Performance optimization", "Access & security review"],
     deliverable: "Test & audit report",
   },
   {
     id: "05",
     title: "LAUNCH & DEPLOYMENT",
-    summary: "A smooth, zero-surprise release into production.",
-    items: ["CI/CD pipeline setup", "Production deployment", "Post-launch monitoring"],
+    summary: "A smooth, zero-surprise release — with your old records carried across.",
+    items: ["Data migration & import", "Staff training & handover", "Production deployment"],
     deliverable: "Live product",
   },
   {
     id: "06",
     title: "SUPPORT & SCALE",
     summary: "We stay with you as usage grows and requirements evolve.",
-    items: ["24/7 SLA-based support", "Feature enhancements", "Ongoing optimizations"],
+    items: ["Support & monitoring", "Backups & updates", "New features as you grow"],
     deliverable: "Growth & maintenance plan",
   },
 ];
 
-const GAP = 16;
+const GAP = 20;
 
 export default function ProcessSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const target = useRef(0); // raw scroll progress 0..1
   const current = useRef(0); // smoothed progress
+  const maxShiftRef = useRef(0);
   const [active, setActive] = useState(0);
-  const [progress, setProgress] = useState(0);
-  const [cardW, setCardW] = useState(320);
 
   const n = processSteps.length;
 
+  // Measure shift required so the last card aligns with the right end width of the container
+  const measure = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const clientW = window.innerWidth;
+    const cards = track.children;
+    if (!cards || cards.length === 0) return;
+
+    const firstCard = cards[0] as HTMLElement;
+    const lastCard = cards[cards.length - 1] as HTMLElement;
+
+    const leftPad = firstCard.offsetLeft;
+    const rightEdge = lastCard.offsetLeft + lastCard.offsetWidth;
+
+    // Shift so last card's right edge aligns with (clientW - leftPad), i.e. symmetric padding
+    const maxShift = Math.max(0, rightEdge + leftPad - clientW);
+    maxShiftRef.current = maxShift;
+  }, []);
+
   useEffect(() => {
-    const measure = () => setCardW(window.innerWidth < 640 ? 300 : window.innerWidth < 1024 ? 420 : 520);
     measure();
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
+    const timer = setTimeout(measure, 400);
+    return () => {
+      window.removeEventListener("resize", measure);
+      clearTimeout(timer);
+    };
+  }, [measure]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -73,6 +94,7 @@ export default function ProcessSection() {
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const scrollable = rect.height - window.innerHeight;
+      if (scrollable <= 0) return;
       target.current = Math.min(Math.max(-rect.top / scrollable, 0), 1);
     };
     onScroll();
@@ -82,17 +104,16 @@ export default function ProcessSection() {
     let raf = 0;
     const tick = () => {
       // ease toward the target for a smooth, carousel-like glide
-      current.current += (target.current - current.current) * 0.1;
-      if (Math.abs(target.current - current.current) < 0.0005) {
+      current.current += (target.current - current.current) * 0.15;
+      if (Math.abs(target.current - current.current) < 0.0004) {
         current.current = target.current;
       }
       const p = current.current;
-      const shift = p * (n - 1) * (cardW + GAP);
+      const shift = p * maxShiftRef.current;
       if (trackRef.current) {
         trackRef.current.style.transform = `translate3d(${-shift}px,0,0)`;
       }
-      setProgress(p);
-      setActive(Math.round(p * (n - 1)));
+      setActive(Math.min(n - 1, Math.round(p * (n - 1))));
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -102,7 +123,7 @@ export default function ProcessSection() {
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(raf);
     };
-  }, [cardW, n]);
+  }, [n]);
 
   return (
     <section
@@ -110,11 +131,11 @@ export default function ProcessSection() {
       className="relative bg-white"
       style={{ height: `${100 + (n - 1) * 80}vh` }}
     >
-      <div className="sticky top-0 min-h-screen py-24 md:py-32 flex flex-col overflow-hidden">
+      <div className="sticky top-0 h-screen py-20 md:py-28 flex flex-col justify-between overflow-hidden select-none">
         {/* Heading */}
-        <div className="max-w-7xl w-full mx-auto px-6 md:px-8 mb-8 md:mb-12 flex items-end justify-between gap-6">
+        <div className="max-w-7xl w-full mx-auto px-6 md:px-8 mb-6 md:mb-8 flex items-end justify-between gap-6 shrink-0">
           <h2 className="max-w-xl text-4xl md:text-5xl font-black tracking-tight leading-tight text-[#0F172A]">
-            Our approach to flawless projects
+            From first conversation to go-live
           </h2>
           <div className="hidden sm:block text-right shrink-0">
             <span className="text-5xl font-black text-[#2A3490] tabular-nums">
@@ -125,15 +146,15 @@ export default function ProcessSection() {
         </div>
 
         {/* Full-bleed carousel track */}
-        <div className="w-full overflow-hidden">
+        <div className="w-full overflow-hidden my-auto">
           <div
             ref={trackRef}
             className="flex items-start will-change-transform"
             style={{
               gap: GAP,
-              // aligns first card with the heading's left edge
+              // aligns first card with the heading's left edge and last card with right container edge
               paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 2rem))",
-              paddingRight: "1.5rem",
+              paddingRight: "max(1.5rem, calc((100vw - 80rem) / 2 + 2rem))",
             }}
           >
             {processSteps.map((step, i) => {
@@ -144,7 +165,10 @@ export default function ProcessSection() {
                   className={`shrink-0 transition-all duration-500 rounded-2xl overflow-hidden border ${
                     isActive ? "border-[#2A3490] shadow-lg" : "border-slate-200"
                   }`}
-                  style={{ width: cardW, opacity: i < active ? 0.45 : 1 }}
+                  style={{
+                    width: "clamp(300px, 85vw, 520px)",
+                    opacity: i < active ? 0.45 : 1,
+                  }}
                 >
                   {/* Header bar */}
                   <div
@@ -189,7 +213,7 @@ export default function ProcessSection() {
                             className={`mt-[7px] h-2 w-2 shrink-0 rounded-full transition-colors duration-500 ${
                               isActive ? "bg-orange-500" : "bg-slate-300"
                             }`}
-                           />
+                          />
                           {item}
                         </li>
                       ))}
@@ -207,16 +231,6 @@ export default function ProcessSection() {
                 </article>
               );
             })}
-          </div>
-        </div>
-
-        {/* Progress bar */}
-        <div className="max-w-7xl w-full mx-auto px-6 md:px-8 mt-12 md:mt-16">
-          <div className="h-[2px] w-full bg-[#E5E6E9]">
-            <div
-              className="h-full bg-[#2A3490]"
-              style={{ width: `${progress * 100}%` }}
-            />
           </div>
         </div>
       </div>

@@ -93,7 +93,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               {project.link && (
@@ -169,10 +169,10 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-2/3">
             <h2 className="text-4xl md:text-6xl font-extrabold uppercase mb-6">
-              Ready to build something <span className="text-orange-500">amazing?</span>
+              Have a similar <span className="text-orange-500">problem?</span>
             </h2>
             <p className="text-lg md:text-xl text-white/80 max-w-2xl">
-              Let's discuss how Sutantra Technologies can help you achieve your goals with cutting-edge solutions.
+              Tell us how your team works today. We will tell you honestly what is worth building — and what is not.
             </p>
           </div>
           <div className="w-full md:w-1/3 flex md:justify-end">
@@ -217,12 +217,12 @@ export default async function ProjectDetailPage({ params }: Props) {
           {/* Right Image */}
           <div className="w-full md:w-1/2">
             <div className="border-[6px] border-[#2A3490] bg-[#2A3490] rounded-2xl">
-              <div className="aspect-[4/3] w-full relative group overflow-hidden bg-white rounded-xl">
+              <div className="aspect-video w-full relative group overflow-hidden bg-white rounded-xl">
                 <Link href={`/projects/${nextProject.slug}`} className="block w-full h-full">
                   <img
                     src={nextProject.image}
                     alt={nextProject.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                 </Link>
               </div>

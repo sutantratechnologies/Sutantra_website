@@ -4,6 +4,14 @@ import React, { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import { usePathname } from "next/navigation";
 
+const getHashTarget = () => {
+  const hash = window.location.hash;
+  if (!hash || hash.length < 2) return null;
+
+  const id = decodeURIComponent(hash.slice(1));
+  return document.getElementById(id);
+};
+
 export default function SmoothScrolling({
   children,
 }: {
@@ -35,12 +43,31 @@ export default function SmoothScrolling({
     };
   }, []);
 
-  // Reset scroll and let Lenis recalculate when pathname changes
+  // Jump to the hashed section on navigation, otherwise reset scroll to the top
   useEffect(() => {
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(0, { immediate: true });
+    const lenis = lenisRef.current;
+    if (!lenis) return;
+
+    const target = getHashTarget();
+    if (target) {
+      // Wait a frame so the newly rendered route has been measured
+      const id = requestAnimationFrame(() => lenis.scrollTo(target, { offset: -90 }));
+      return () => cancelAnimationFrame(id);
     }
+
+    lenis.scrollTo(0, { immediate: true });
   }, [pathname]);
+
+  // Handle hash-only changes (e.g. clicking a service link in the mobile menu)
+  useEffect(() => {
+    const onHashChange = () => {
+      const target = getHashTarget();
+      if (target) lenisRef.current?.scrollTo(target, { offset: -90 });
+    };
+
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
 
   return <>{children}</>;
 }

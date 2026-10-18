@@ -44,7 +44,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-xl font-extrabold tracking-tight uppercase mb-4">2. Services Provided</h2>
             <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium mb-4">
-              Sutantra Technologies provides custom software development, cloud architecture, AI integrations, web application development, and IT consulting services (the "Services").
+              Sutantra Technologies provides website and web application development, mobile application development, graphic and brand design, custom management software (including school, college, consultancy and business systems), and related maintenance and support services (the &quot;Services&quot;).
             </p>
             <ul className="list-disc list-outside ml-5 text-sm md:text-base text-slate-600 leading-relaxed font-medium space-y-2">
               <li>All project timelines, deliverables, and fees will be outlined in a separate Statement of Work (SOW) or project agreement.</li>
@@ -55,7 +55,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-xl font-extrabold tracking-tight uppercase mb-4">3. Intellectual Property</h2>
             <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium">
-              Unless otherwise agreed upon in writing, Sutantra Technologies retains all intellectual property rights to the source code, frameworks, and architectures we develop until full payment is received. Upon receipt of final payment, IP rights transfer to the client as specified in the project agreement. Our proprietary background tech and internal libraries remain our exclusive property.
+              Unless otherwise agreed upon in writing, Sutantra Technologies retains all intellectual property rights to the source code, frameworks, and architectures we develop until full payment is received. Upon receipt of final payment, IP rights to the work created specifically for you transfer to you as specified in the project agreement. Our proprietary background tech, internal libraries, and reusable design systems remain our exclusive property. Client data always remains the property of the client.
             </p>
           </div>
 

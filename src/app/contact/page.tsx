@@ -7,7 +7,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Us | SUTANTRA TECHNOLOGIES",
-  description: "Get in touch with Sutantra Technologies. Partner with us to engineer scalable software solutions that drive real impact.",
+  description:
+    "Get in touch with Sutantra Technologies in Butwal — websites, mobile apps, brand design and custom management software for schools and businesses.",
   alternates: {
     canonical: "/contact",
   },
@@ -25,7 +26,7 @@ export default function ContactPage() {
             CONTACT US.
           </h1>
           <p className="text-lg md:text-xl text-black/60 max-w-2xl font-medium">
-            Partner with us to engineer scalable software solutions that drive real impact.
+            Websites, mobile apps, brand design and custom management software — start with a conversation, no obligation.
           </p>
         </div>
       </section>

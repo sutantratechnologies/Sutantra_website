@@ -5,18 +5,18 @@ import React from "react";
 const values = [
   {
     id: "01",
-    title: "Scalable Architecture",
-    description: "We don't just build for today. Our systems are engineered using modern, modular architectures that effortlessly scale alongside your business growth and user demand."
+    title: "Built Around Your Workflow",
+    description: "We start from your forms, approvals and reports — not from a template. If your fee structure has four exceptions, the software will understand all four."
   },
   {
     id: "02",
-    title: "Security First",
-    description: "Enterprise-grade security isn't an afterthought. We embed robust security protocols and best practices into every layer of our code from day one to protect your data."
+    title: "Your Data, Properly Handled",
+    description: "Student records and client files deserve real access control. Roles, backups and audit trails are part of the build, not an upgrade sold later."
   },
   {
     id: "03",
-    title: "Transparent Delivery",
-    description: "No black boxes here. Through agile sprints and constant communication, you get full visibility into our process, ensuring the final product matches your exact vision."
+    title: "Straight Answers, Clear Scope",
+    description: "Fixed scope, visible progress and a direct line to the people writing the code. If something is a bad idea, you will hear it from us early."
   }
 ];
 
@@ -31,7 +31,7 @@ export default function CoreValuesSection() {
             WHY CHOOSE US
           </span>
           <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight">
-            Engineering standards that clearly set us apart.
+            How we work, and why clients stay.
           </h2>
         </div>
 
