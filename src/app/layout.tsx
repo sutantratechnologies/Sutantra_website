@@ -2,14 +2,16 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
+import FestivalWelcome from "@/components/FestivalWelcome";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sutantratechnology.com"),
   alternates: {
     canonical: "/",
   },
-  title: "SUTANTRA TECHNOLOGIES | Reliable Systems. Remarkable Innovation.",
-  description: "Empowering global enterprises with cutting-edge software engineering, AI systems, and cloud architecture.",
+  title: "SUTANTRA TECHNOLOGIES | Web, Mobile & Custom Software",
+  description:
+    "Software studio in Butwal, Nepal building websites, mobile apps, brand design and custom management software for schools, consultancies and growing businesses.",
   icons: {
     icon: [
       { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -24,8 +26,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.sutantratechnology.com",
     siteName: "SUTANTRA TECHNOLOGIES",
-    title: "SUTANTRA TECHNOLOGIES | Reliable Systems. Remarkable Innovation.",
-    description: "Empowering global enterprises with cutting-edge software engineering, AI systems, and cloud architecture.",
+    title: "SUTANTRA TECHNOLOGIES | Web, Mobile & Custom Software",
+    description:
+      "Software studio in Butwal, Nepal building websites, mobile apps, brand design and custom management software for schools, consultancies and growing businesses.",
   },
 };
 
@@ -74,24 +77,46 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Service",
-        "serviceType": "Custom Software Development",
+        "serviceType": "Web Development",
         "provider": {
           "@type": "Organization",
           "name": "Sutantra Technologies",
           "url": "https://www.sutantratechnology.com"
         },
-        "description": "Custom enterprise software engineering, web application development, and system integrations tailored for modern digital transformation.",
+        "description": "Business websites, web applications and online stores built for speed, search visibility and everyday use.",
         "areaServed": "Global"
       },
       {
         "@type": "Service",
-        "serviceType": "AI and Data Solutions",
+        "serviceType": "Mobile App Development",
         "provider": {
           "@type": "Organization",
           "name": "Sutantra Technologies",
           "url": "https://www.sutantratechnology.com"
         },
-        "description": "Integration of intelligent workflows, generative AI frameworks, and advanced data analytics solutions.",
+        "description": "Android and iOS applications built from a single codebase for customer-facing and internal use.",
+        "areaServed": "Global"
+      },
+      {
+        "@type": "Service",
+        "serviceType": "Graphic and Brand Design",
+        "provider": {
+          "@type": "Organization",
+          "name": "Sutantra Technologies",
+          "url": "https://www.sutantratechnology.com"
+        },
+        "description": "Logo and brand identity, print collateral, social creatives and UI/UX design.",
+        "areaServed": "Global"
+      },
+      {
+        "@type": "Service",
+        "serviceType": "Custom Management Software",
+        "provider": {
+          "@type": "Organization",
+          "name": "Sutantra Technologies",
+          "url": "https://www.sutantratechnology.com"
+        },
+        "description": "School, college, consultancy and business management systems covering admissions, attendance, fees, billing, inventory and reporting.",
         "areaServed": "Global"
       }
     ]
@@ -137,6 +162,9 @@ export default function RootLayout({
         <SmoothScrolling>
           {children}
         </SmoothScrolling>
+
+        {/* Seasonal greeting — remove this one line to take it down */}
+        <FestivalWelcome />
       </body>
     </html>
   );

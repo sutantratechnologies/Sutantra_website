@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 export default function AboutSection() {
   return (
     <section id="about" className="py-24 px-6 md:px-16 bg-white text-[#171717]">
@@ -10,7 +8,7 @@ export default function AboutSection() {
           {/* Left Column */}
           <div className="flex flex-col items-start space-y-10">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-normal leading-[1.1] tracking-tight">
-              We are your complete digital solution partner specialising in AI, cloud architecture, and enterprise platforms.
+              A software studio for the schools, consultancies and businesses that need systems built around how they actually work.
             </h2>
             <a
               href="/contact"
@@ -26,7 +24,7 @@ export default function AboutSection() {
           {/* Right Column */}
           <div className="flex flex-col items-start space-y-8 lg:pl-12 pt-2">
             <p className="text-base md:text-lg text-[#171717]/80 leading-relaxed font-normal">
-              For over 5 years we&apos;ve been building the best software solutions for enterprises right here and globally. We&apos;re able to offer the perfect digital platform for your business, not just through how it looks but right down to how it operates. From robust microservices to fully automated AI designs, we match the right technology to your business needs.
+              Our designers and engineers have spent years building and maintaining the unglamorous software that keeps organisations running — admissions, attendance, fees, client records, billing and reporting. We keep the team small and senior, so the people who plan your project are the same people who build it, launch it and stay on to support it. Websites, mobile apps, brand design and custom management systems: one team, one point of contact.
             </p>
             <a
               href="/about"
@@ -37,17 +35,18 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* Partners Section */}
+        {/* Toolkit Section */}
         <div className="border-t border-black/10 pt-16">
           <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-10 text-center lg:text-left">
-            Our Technology Partners
+            Tools we build with
           </p>
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-12 opacity-60 grayscale">
-            {/* Replace with actual partner logos later */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-12 gap-y-6 opacity-60 grayscale">
             <div className="text-2xl font-bold tracking-tighter">NEXT.JS</div>
-            <div className="text-2xl font-bold tracking-tighter">AWS</div>
-            <div className="text-2xl font-bold tracking-tighter">GOOGLE CLOUD</div>
             <div className="text-2xl font-bold tracking-tighter">REACT</div>
+            <div className="text-2xl font-bold tracking-tighter">NODE.JS</div>
+            <div className="text-2xl font-bold tracking-tighter">REACT NATIVE</div>
+            <div className="text-2xl font-bold tracking-tighter">POSTGRESQL</div>
+            <div className="text-2xl font-bold tracking-tighter">FIGMA</div>
           </div>
         </div>
       </div>

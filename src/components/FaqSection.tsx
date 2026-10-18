@@ -6,33 +6,33 @@ import { motion, AnimatePresence } from "framer-motion";
 const faqs = [
   {
     id: 1,
-    question: "How long does a typical project take?",
-    answer: "Project timelines vary depending on complexity and scope. A standard web platform might take 8-12 weeks, while complex enterprise solutions can take 4-6 months. We provide a detailed timeline during the initial consultation.",
+    question: "What kind of projects do you take on?",
+    answer: "Websites and web apps, Android and iOS mobile apps, brand and graphic design, and custom management software — especially school, college, consultancy and small-business systems. If your work runs on registers, spreadsheets and WhatsApp messages today, that is usually a good place to start.",
   },
   {
     id: 2,
-    question: "What maintenance is required after launch?",
-    answer: "We offer comprehensive maintenance packages including security updates, performance monitoring, server hosting, and regular backups to ensure your platform runs smoothly at all times.",
+    question: "Do you build school management software from scratch?",
+    answer: "Yes. We map your admissions process, fee structure, attendance rules, exam pattern and reporting requirements, then build a system around them. Modules can be added in phases, so you are not paying for the whole platform on day one.",
   },
   {
     id: 3,
-    question: "Are your solutions compliant with enterprise security standards?",
-    answer: "Yes. Security is built into our architecture from day one. We adhere to industry best practices and can ensure compliance with specific standards like SOC2, GDPR, or HIPAA depending on your requirements.",
+    question: "How long does a typical project take?",
+    answer: "A business website usually takes 3–5 weeks, a mobile app 8–12 weeks, and a custom management system 2–4 months depending on modules. You get a written timeline with milestones before work starts — and regular working builds to review, not one big reveal at the end.",
   },
   {
     id: 4,
-    question: "Can you integrate with existing legacy systems?",
-    answer: "Absolutely. We specialize in building modern interfaces and APIs that seamlessly connect with your existing legacy systems, preventing the need for a full rip-and-replace of your infrastructure.",
+    question: "What happens after launch?",
+    answer: "You get training, documentation and admin access so your team can run the system. We also offer ongoing support covering backups, updates, monitoring, and new features as your needs change.",
   },
   {
     id: 5,
-    question: "What tech stack do you specialize in?",
-    answer: "We focus on modern, highly scalable technologies. Our primary stack includes Next.js, React, Node.js, and cloud architecture across AWS and Google Cloud, ensuring high performance and reliability.",
+    question: "Can you work with our existing website or records?",
+    answer: "Usually, yes. We migrate data from spreadsheets, older databases or another platform, and we can build around an existing website or app instead of replacing everything. We will tell you honestly if a rebuild is the cheaper option.",
   },
   {
     id: 6,
-    question: "Do you offer emergency support services?",
-    answer: "Yes, we provide 24/7 SLA-based emergency support for critical enterprise applications to ensure maximum uptime and immediate resolution of any critical issues.",
+    question: "Who owns the code and the data?",
+    answer: "You do. On final payment the code and content built for you are yours, and your data stays in your accounts. Our internal libraries and tooling remain ours, but nothing about your business is locked behind us.",
   },
 ];
 
@@ -53,7 +53,7 @@ export default function FaqSection() {
             FREQUENTLY <br /> ASKED QUESTIONS
           </h2>
           <p className="text-gray-500 text-xs md:text-sm max-w-2xl mx-auto mt-6">
-            Find answers to common questions about our software solutions, development process, and enterprise services.
+            Straight answers about timelines, ownership, support and how we build custom systems.
           </p>
         </div>
 

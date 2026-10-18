@@ -45,7 +45,7 @@ export default function Hero() {
         >
           <span className="w-2 h-2 rounded-full bg-orange-500 animate-[pulse_2s_ease-in-out_infinite]" />
           <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em] text-slate-300">
-            Award-Winning Engineering
+            Software Studio · Butwal, Nepal
           </span>
         </motion.div>
 
@@ -57,9 +57,9 @@ export default function Hero() {
           className="text-[11vw] sm:text-7xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter uppercase leading-[0.9] text-white drop-shadow-2xl mb-8 flex flex-col"
         >
           <span>
-            Reliable <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600">Code.</span>
+            Built <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600">Around</span>
           </span>
-          <span className="text-white">Real Impact.</span>
+          <span className="text-white">Your Business.</span>
         </motion.h1>
 
         {/* Subtext */}
@@ -69,7 +69,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed font-light mb-12"
         >
-          For over <span className="text-white font-bold">5+ years</span>, Sutantra Technologies has transformed global enterprises with scalable software architecture and cutting-edge digital experiences.
+          We build <span className="text-white font-bold">websites, mobile apps, brand visuals</span> and custom management software for schools, consultancies and growing businesses — designed around how your team already works.
         </motion.p>
 
         {/* Action Buttons */}
@@ -94,7 +94,7 @@ export default function Hero() {
           >
             <span className="absolute inset-0 w-full h-full bg-white/10 scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
             <span className="relative z-10 flex items-center justify-center gap-2">
-              Explore Services
+              See What We Build
               <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>

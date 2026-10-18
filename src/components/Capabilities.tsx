@@ -2,24 +2,24 @@
 
 const capabilities = [
   {
-    title: "AI & Machine Learning",
-    description: "Custom generative AI agents, neural network architectures, and predictive analytics tailored for enterprise workflows.",
-    tag: "01 / INTELLIGENCE",
+    title: "Web Development",
+    description: "Fast, responsive websites, web applications and online stores, built to be found, used and updated by your own team.",
+    tag: "01 / WEB",
   },
   {
-    title: "Cloud & Infrastructure",
-    description: "Resilient microservices, Kubernetes orchestration, serverless platforms, and automated CI/CD pipelines.",
-    tag: "02 / SCALABILITY",
+    title: "Mobile Applications",
+    description: "Android and iOS apps from one codebase, designed for real networks, real devices and real users.",
+    tag: "02 / MOBILE",
   },
   {
-    title: "Web & Mobile Platforms",
-    description: "High-performance web apps, native iOS/Android development, and real-time interactive user interfaces.",
-    tag: "03 / EXPERIENCE",
+    title: "Graphic & Brand Design",
+    description: "Logo and identity systems, print collateral, social creatives and interface design that stay consistent everywhere.",
+    tag: "03 / DESIGN",
   },
   {
-    title: "Cybersecurity & Governance",
-    description: "Zero-trust network architecture, data encryption standards, compliance auditing, and threat mitigation.",
-    tag: "04 / PROTECTION",
+    title: "Management Software",
+    description: "School, consultancy and business systems covering records, attendance, fees, billing, inventory and reporting.",
+    tag: "04 / SYSTEMS",
   },
 ];
 

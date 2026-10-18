@@ -8,7 +8,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Careers | SUTANTRA TECHNOLOGIES",
-  description: "Join our team at Sutantra Technologies. We are always looking for passionate talent.",
+  description:
+    "Build web, mobile and custom management software with a small, senior team in Butwal. See open roles at Sutantra Technologies.",
   alternates: {
     canonical: "/careers",
   },
@@ -35,7 +36,7 @@ export default function CareersPage() {
             CAREERS.
           </h1>
           <p className="text-lg md:text-xl text-black/60 max-w-2xl font-medium">
-            Join us in building the future of digital solutions. We're always looking for talented individuals to join our growing team.
+            We are a small team in Butwal building software that schools, consultancies and local businesses rely on every day. If you like owning your work end to end — and seeing it used in the real world — we would like to hear from you.
           </p>
         </div>
       </section>
@@ -43,7 +44,10 @@ export default function CareersPage() {
       {/* Main Content - Blue Background */}
       <section className="py-24 px-6 md:px-16 bg-[#2A3490] text-white flex-grow min-h-[50vh]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-extrabold uppercase mb-12">Open Positions</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold uppercase mb-4">Open Positions</h2>
+          <p className="text-white/70 text-sm md:text-base max-w-2xl mb-12">
+            We hire for full-stack development, mobile development, UI and graphic design, and QA. Internships are available for final-year students.
+          </p>
 
           {jobs.length > 0 ? (
             <div className="flex flex-col">
@@ -76,7 +80,15 @@ export default function CareersPage() {
             </div>
           ) : (
             <div className="py-12 border-t border-b border-white/20">
-              <p className="text-white/70 text-lg">There are currently no open positions. Please check back later.</p>
+              <p className="text-white/70 text-lg mb-6">
+                There are no advertised vacancies right now, but we keep good applications on file.
+              </p>
+              <a
+                href="mailto:info@sutantratechnology.com?subject=Application%20%E2%80%94%20Sutantra%20Technologies"
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/30 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[#2A3490] transition-colors duration-300"
+              >
+                Send Your CV ↗
+              </a>
             </div>
           )}
 

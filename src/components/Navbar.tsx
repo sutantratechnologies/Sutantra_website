@@ -105,7 +105,7 @@ export default function Navbar() {
 
   const textColor = lightUI ? "text-white" : "text-[#171717]";
   const textHover = lightUI ? "hover:text-orange-400" : "hover:text-orange-600";
-  const logoSrc = lightUI ? "/logo_light.svg" : "/logo_dark.svg";
+  const logoSrc = "/dashin_logo.png";
 
   return (
     <>
@@ -124,8 +124,8 @@ export default function Navbar() {
               src={logoSrc}
               alt="SUTANTRA TECHNOLOGIES Logo"
               width={180}
-              height={42}
-              className="h-8 md:h-10 w-auto object-contain transition-all duration-300"
+              height={60}
+              className="h-10 md:h-12 w-auto object-contain transition-all duration-300"
               priority
               loading="eager"
             />
@@ -205,12 +205,12 @@ export default function Navbar() {
 
           {/* Sub Links (2 Column Grid) */}
           <div className="grid grid-cols-2 gap-y-4 gap-x-4 mb-8">
-            <Link href="/#web" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">WEB APPS</Link>
-            <Link href="/#mobile" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">MOBILE APPS</Link>
-            <Link href="/#cloud" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">CLOUD INFRA</Link>
-            <Link href="/#ai" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">AI SOLUTIONS</Link>
-            <Link href="/#enterprise" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">ENTERPRISE</Link>
-            <Link href="/#blog" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">BLOG</Link>
+            <Link href="/services#web-development" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">WEB DEVELOPMENT</Link>
+            <Link href="/services#mobile-app-development" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">MOBILE APPS</Link>
+            <Link href="/services#graphics-brand-design" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">GRAPHIC DESIGN</Link>
+            <Link href="/services#school-management-software" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">SCHOOL SOFTWARE</Link>
+            <Link href="/services#business-consultancy-systems" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">BUSINESS SYSTEMS</Link>
+            <Link href="/projects" onClick={() => setIsOpen(false)} tabIndex={isOpen ? 0 : -1} className="text-white text-[11px] sm:text-xs font-black uppercase tracking-widest hover:text-orange-500 transition-colors">OUR WORK</Link>
           </div>
         </div>
 

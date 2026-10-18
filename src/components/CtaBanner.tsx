@@ -9,13 +9,13 @@ export default function CtaBanner() {
       
       <div className="relative z-20 max-w-4xl mx-auto text-center flex flex-col items-center">
         <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tighter uppercase text-white mb-6 leading-none">
-          ROBUST SYSTEMS, DEPLOYED AND SCALING
+          TELL US HOW YOUR BUSINESS RUNS.
         </h2>
         <p className="text-white/90 font-bold uppercase tracking-widest text-[10px] md:text-xs mb-10">
-          Version 1 deployed. Let's talk about Version 2.0 for your enterprise.
+          We&apos;ll show you the software that fits around it.
         </p>
         <a href="/contact" className="inline-flex items-center justify-center px-10 py-4 rounded-full border-2 border-white text-xs font-bold tracking-widest uppercase text-[#2A3490] bg-white hover:bg-transparent hover:text-white transition-all duration-300">
-          BOOK A CONSULT
+          BOOK A FREE CONSULT
         </a>
       </div>
     </section>
