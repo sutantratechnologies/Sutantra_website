@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { usePathname } from "next/navigation";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { FaInstagram, FaLinkedinIn, FaTiktok } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiFacebook } from "react-icons/fi";
@@ -27,33 +26,25 @@ export default function Footer() {
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-10">
 
-          {/* Left Column: Logo & Contact Info */}
-          <div className="col-span-1 md:col-span-4 flex flex-col items-start gap-6">
+          {/* Left Column: Logo & Brand Description */}
+          <div className="col-span-1 md:col-span-4 flex flex-col items-start gap-4">
             <Image
               src={logoSrc}
               alt="SUTANTRA TECHNOLOGIES"
               width={180}
               height={60}
-              className="h-12 w-auto object-contain mb-2"
+              className="h-12 w-auto object-contain mb-1"
               priority
               loading="eager"
             />
-            <div className="flex flex-col gap-2 text-white/90 font-medium">
-              <a href="tel:+9779867139612" className="hover:text-orange-400 transition-colors">
-                +977- 9867-139612
-              </a>
-              <a href="mailto:info@sutantratechnology.com" className="hover:text-orange-400 transition-colors">
-                info@sutantratechnology.com
-              </a>
-            </div>
+            <p className="text-sm text-white/70 leading-relaxed max-w-sm font-normal">
+              A software studio in Nepal building websites, mobile apps, brand identities, and custom management software.
+            </p>
             <a
-              href="/contact"
-              className="mt-4 group relative overflow-hidden px-6 py-2.5 rounded-full border border-white/40 text-sm font-semibold tracking-wide text-white transition-colors duration-300"
+              href="mailto:info@sutantratechnology.com"
+              className="text-xs font-semibold text-white/80 hover:text-orange-400 transition-colors tracking-wide pt-1"
             >
-              <span className="absolute inset-0 w-full h-full bg-white scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
-              <span className="relative z-10 transition-colors duration-300 group-hover:text-[#2A3490]">
-                CONTACT US
-              </span>
+              info@sutantratechnology.com
             </a>
           </div>
 
@@ -130,10 +121,17 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} Sutantra Technologies Pvt. Ltd.
           </p>
-          <a href="/terms" className="group relative inline-block pb-1 transition-colors duration-300">
-            Terms & Conditions
-            <span className="absolute left-0 bottom-0 w-full h-[1px] bg-white scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
-          </a>
+          <div className="flex items-center gap-6">
+            <a href="/terms" className="group relative inline-block pb-1 transition-colors duration-300">
+              Terms & Conditions
+              <span className="absolute left-0 bottom-0 w-full h-[1px] bg-white scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
+            </a>
+            <span className="text-white/40">•</span>
+            <a href="/privacy" className="group relative inline-block pb-1 transition-colors duration-300">
+              Privacy Policy
+              <span className="absolute left-0 bottom-0 w-full h-[1px] bg-white scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
