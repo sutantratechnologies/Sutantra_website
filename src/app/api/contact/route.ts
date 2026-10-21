@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const BRAND = "#2A3490";
 const ACCENT = "#F97316";
 
@@ -167,6 +165,16 @@ Message:
 ${data.message}
 `;
 
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("Missing RESEND_API_KEY environment variable");
+      return NextResponse.json(
+        { success: false, error: "Email service is temporarily unavailable. Please try again later." },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: "Sutantra Contact <contact@sutantratechnology.com>",
       to: ["info@sutantratechnology.com"],

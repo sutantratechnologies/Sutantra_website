@@ -51,49 +51,49 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Top Header & Stats */}
-      <section className="pt-40 pb-16 px-6 md:px-16 bg-white text-[#111827]">
+      <section className="pt-36 sm:pt-40 pb-12 sm:pb-16 px-6 md:px-16 bg-white text-[#111827]">
         <div className="max-w-7xl mx-auto">
           {/* Main Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-extrabold tracking-tighter uppercase leading-[0.95] mb-8 text-[#171717]">
             BUILT IN NEPAL.<br />BUILT TO LAST.
           </h1>
-          <p className="text-base md:text-lg text-black/70 max-w-3xl font-medium mb-20 leading-relaxed">
+          <p className="text-base md:text-lg text-black/70 max-w-3xl font-medium mb-16 leading-relaxed">
             Sutantra Technologies is a software studio based in Butwal. We design and build websites, mobile apps, brand identities and custom management software for schools, consultancies and growing businesses — the kind of systems that run all day, every day, and still make sense a few years later.
           </p>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t-[3px] border-[#171717] pt-8">
+          {/* Minimal Stats Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-slate-200/70 pt-10">
             <div className="flex flex-col">
-              <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-2">04</span>
-              <span className="text-xs font-bold tracking-widest uppercase text-slate-500">Service Lines</span>
+              <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-1 text-[#171717]">04</span>
+              <span className="text-[11px] sm:text-xs font-bold tracking-widest uppercase text-slate-400">Service Lines</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-2">100%</span>
-              <span className="text-xs font-bold tracking-widest uppercase text-slate-500">In-House Delivery</span>
+              <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-1 text-[#171717]">100%</span>
+              <span className="text-[11px] sm:text-xs font-bold tracking-widest uppercase text-slate-400">In-House Delivery</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-2">03</span>
-              <span className="text-xs font-bold tracking-widest uppercase text-slate-500">Founding Partners</span>
+              <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-1 text-[#171717]">03</span>
+              <span className="text-[11px] sm:text-xs font-bold tracking-widest uppercase text-slate-400">Founding Partners</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-2">24/7</span>
-              <span className="text-xs font-bold tracking-widest uppercase text-slate-500">Client Support</span>
+              <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-1 text-[#171717]">24/7</span>
+              <span className="text-[11px] sm:text-xs font-bold tracking-widest uppercase text-slate-400">Client Support</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Who We Are & At a Glance */}
-      <section className="py-16 px-6 md:px-16 bg-white text-[#111827]">
+      <section className="py-16 sm:py-20 px-6 md:px-16 bg-white text-[#111827]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
 
             {/* Left: Who We Are */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight uppercase border-b-[3px] border-[#171717] pb-4 mb-8">
+            <div className="lg:col-span-7">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight uppercase mb-6 text-[#171717]">
                 WHO WE ARE
               </h2>
-              <div className="space-y-6 text-sm md:text-base text-slate-600 leading-relaxed font-medium">
+              <div className="space-y-5 text-sm md:text-base text-slate-600 leading-relaxed font-normal">
                 <p>
                   We are a small, senior team of designers, software engineers and project managers working out of Butwal. We take a project from the first conversation through design, development, launch and long-term support — one team, accountable for the whole lifecycle.
                 </p>
@@ -104,30 +104,30 @@ export default function AboutPage() {
             </div>
 
             {/* Right: At a Glance */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight uppercase border-b-[3px] border-[#171717] pb-4 mb-8">
+            <div className="lg:col-span-5">
+              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight uppercase mb-6 text-[#171717]">
                 AT A GLANCE
               </h2>
-              <div className="flex flex-col text-[11px] md:text-xs uppercase tracking-widest font-bold">
-                <div className="grid grid-cols-3 py-5 border-b border-slate-200">
-                  <span className="text-slate-400">LOCATION</span>
-                  <span className="col-span-2 text-right md:text-left text-black">Butwal, Lumbini, Nepal</span>
+              <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 sm:p-8 space-y-4">
+                <div className="flex items-center justify-between gap-4 text-xs">
+                  <span className="font-bold tracking-wider uppercase text-slate-400">Location</span>
+                  <span className="font-bold text-slate-900 text-right">Butwal, Lumbini, Nepal</span>
                 </div>
-                <div className="grid grid-cols-3 py-5 border-b border-slate-200">
-                  <span className="text-slate-400">ENGAGEMENT</span>
-                  <span className="col-span-2 text-right md:text-left text-black">Fixed scope, weekly demos</span>
+                <div className="flex items-center justify-between gap-4 text-xs">
+                  <span className="font-bold tracking-wider uppercase text-slate-400">Engagement</span>
+                  <span className="font-bold text-slate-900 text-right">Fixed scope, weekly demos</span>
                 </div>
-                <div className="grid grid-cols-3 py-5 border-b border-slate-200">
-                  <span className="text-slate-400">TEAM</span>
-                  <span className="col-span-2 text-right md:text-left text-black">Design, Engineering, Product</span>
+                <div className="flex items-center justify-between gap-4 text-xs">
+                  <span className="font-bold tracking-wider uppercase text-slate-400">Team</span>
+                  <span className="font-bold text-slate-900 text-right">Design, Engineering, Product</span>
                 </div>
-                <div className="grid grid-cols-3 py-5 border-b border-slate-200">
-                  <span className="text-slate-400">SCOPE</span>
-                  <span className="col-span-2 text-right md:text-left text-black">Web, Mobile, Brand, Custom Systems</span>
+                <div className="flex items-center justify-between gap-4 text-xs">
+                  <span className="font-bold tracking-wider uppercase text-slate-400">Scope</span>
+                  <span className="font-bold text-slate-900 text-right">Web, Mobile, Brand, Systems</span>
                 </div>
-                <div className="grid grid-cols-3 py-5 border-b border-slate-200">
-                  <span className="text-slate-400">STACK</span>
-                  <span className="col-span-2 text-right md:text-left text-black">Next.js, React Native, Node.js, PostgreSQL</span>
+                <div className="flex items-center justify-between gap-4 text-xs">
+                  <span className="font-bold tracking-wider uppercase text-slate-400">Stack</span>
+                  <span className="font-bold text-slate-900 text-right">Next.js, React Native, Node, Postgres</span>
                 </div>
               </div>
             </div>
