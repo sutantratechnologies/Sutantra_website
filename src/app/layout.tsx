@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import FestivalWelcome from "@/components/FestivalWelcome";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sutantratechnology.com"),
@@ -165,6 +166,9 @@ export default function RootLayout({
 
         {/* Seasonal greeting — remove this one line to take it down */}
         <FestivalWelcome />
+
+        {/* Vercel Web Analytics */}
+        <Analytics />
       </body>
     </html>
   );
