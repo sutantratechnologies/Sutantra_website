@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import FestivalOffer from "@/components/FestivalOffer";
 import AboutSection from "@/components/AboutSection";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import ServicesSection from "@/components/ServicesSection";
@@ -15,8 +14,6 @@ export default function Home() {
     <main className="min-h-screen bg-white text-[#171717] flex flex-col font-telegraf selection:bg-orange-500 selection:text-white">
       <Navbar />
       <Hero />
-      {/* Seasonal campaign — remove this one line to take it down */}
-      <FestivalOffer />
       <AboutSection />
       <FeaturedProjects />
       <ServicesSection />
