@@ -11,7 +11,9 @@ export default function Navbar() {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false;
+
+    const checkTheme = () => {
       const sections = document.querySelectorAll("section, footer");
       let currentSection: Element | null = null;
       const checkY = 50;
@@ -43,10 +45,18 @@ export default function Navbar() {
       } else if (window.scrollY < 50) {
         setIsDarkTheme(true);
       }
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(checkTheme);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    checkTheme();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
