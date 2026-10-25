@@ -30,8 +30,8 @@ export default function CareersPage() {
       <Navbar />
 
       {/* Top Header - White Background */}
-      <section className="pt-40 pb-16 px-6 md:px-16 bg-white text-[#111827]">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-40 pb-16 bg-white text-[#111827]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tight uppercase leading-[0.95] mb-6 text-[#171717]">
             CAREERS.
           </h1>
@@ -42,8 +42,8 @@ export default function CareersPage() {
       </section>
 
       {/* Main Content - Blue Background */}
-      <section className="py-24 px-6 md:px-16 bg-[#2A3490] text-white flex-grow min-h-[50vh]">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24 bg-[#2A3490] text-white flex-grow min-h-[50vh]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <h2 className="text-3xl md:text-4xl font-extrabold uppercase mb-4">Open Positions</h2>
           <p className="text-white/70 text-sm md:text-base max-w-2xl mb-12">
             We hire for full-stack development, mobile development, UI and graphic design, and QA. Internships are available for final-year students.

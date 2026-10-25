@@ -86,8 +86,8 @@ export default function ServicesPage() {
       <Navbar />
 
       {/* Top Header - White Background */}
-      <section className="pt-40 pb-16 px-6 md:px-16 bg-white text-[#111827]">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-40 pb-16 bg-white text-[#111827]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tight uppercase leading-[0.95] mb-6 text-[#171717]">
             SERVICES.
           </h1>
@@ -98,8 +98,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Main Content - Grid Layout */}
-      <section className="py-16 px-6 md:px-16 bg-white flex-grow">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 bg-white flex-grow">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {services.map((service) => (
               <div
@@ -131,8 +131,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Industries We Build For */}
-      <section className="py-24 px-6 md:px-16 bg-[#2A3490] text-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 bg-[#2A3490] text-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500 mb-4 block">
             Who we build for
           </span>

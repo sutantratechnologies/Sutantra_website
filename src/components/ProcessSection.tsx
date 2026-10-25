@@ -1,238 +1,345 @@
 "use client";
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 
-const processSteps = [
+interface PhaseData {
+  id: string;
+  category: string;
+  title: string;
+  lead: string;
+  details: string;
+  deliverables: string[];
+  teamInvolved: string;
+}
+
+const PHASES: PhaseData[] = [
   {
     id: "01",
-    title: "DISCOVERY & STRATEGY",
-    summary: "We learn how your school, consultancy or business actually runs before writing a line of code.",
-    items: ["Workflow & form mapping", "Requirements gathering", "Scope & budget review"],
-    deliverable: "Project roadmap",
+    category: "FOUNDATION & ALIGNMENT",
+    title: "Discovery and System Architecture",
+    lead: "We analyze how your school, consultancy or enterprise actually operates before a single line of code is written.",
+    details:
+      "Our senior engineers audit your existing workflows, legacy paper forms, spreadsheets, and databases. We define the full technical roadmap, data schemas, API specifications, and budget milestones upfront to guarantee zero scope drift.",
+    deliverables: ["Technical Architecture Specification", "Database Schema & Entity Map", "Fixed Timeline & Sprint Plan"],
+    teamInvolved: "Lead Architect · Solutions Engineer · Product Strategist",
   },
   {
     id: "02",
-    title: "DESIGN & PROTOTYPING",
-    summary: "Ideas become clickable screens you can test and approve early — including your brand language.",
-    items: ["Wireframing & UX mapping", "Brand & UI design", "Interactive prototyping"],
-    deliverable: "Approved prototype",
+    category: "INTERFACE & PROTOTYPING",
+    title: "Clickable Prototypes and Design Tokens",
+    lead: "Ideas transform into interactive, clickable prototypes you test and approve early — including complete brand design.",
+    details:
+      "We build your typography scales, color palettes, and component library in Figma first. Every critical user journey (admissions flow, admin ledger, student portal, checkout) is tested on mobile and desktop before front-end engineering begins.",
+    deliverables: ["Interactive High-Fidelity Prototype", "Production Figma Design System", "User Journey & UX Wireframes"],
+    teamInvolved: "UI/UX Designer · Creative Director · Frontend Architect",
   },
   {
     id: "03",
-    title: "DEVELOPMENT",
-    summary: "Clean, modular engineering delivered in short, reviewable sprints.",
-    items: ["Web & mobile engineering", "Payments & SMS integrations", "Roles, permissions & reporting"],
-    deliverable: "Working product builds",
+    category: "ENGINEERING & SPRINTS",
+    title: "Modular Software Engineering",
+    lead: "Clean, modular code delivered in bi-weekly reviewable sprints with direct senior developer communication.",
+    details:
+      "Next.js 16 web applications, cross-platform React Native mobile platforms, and bespoke ERP backends built with clean architecture, strict TypeScript types, automated unit tests, and secure role-based access control.",
+    deliverables: ["Weekly Staging Environments", "Production-Ready Source Code", "Automated CI/CD Pipeline"],
+    teamInvolved: "Senior Fullstack Engineers · Mobile Specialists · Database Architect",
   },
   {
     id: "04",
-    title: "QA & TESTING",
-    summary: "Every feature is tested on real data, real devices and slow connections.",
-    items: ["Manual & automated testing", "Performance optimization", "Access & security review"],
-    deliverable: "Test & audit report",
+    category: "QUALITY & SECURITY",
+    title: "Rigorous QA and Stress Testing",
+    lead: "Every feature is validated on real devices, patchy connections, and simulated high-concurrency traffic.",
+    details:
+      "We perform cross-browser verification, database query profiling, automated regression testing, security permission audits, and edge-case simulation to guarantee lightning-fast load times and uncompromised stability under load.",
+    deliverables: ["Security Audit Report", "Performance Optimization Benchmarks", "Cross-Device QA Sign-off"],
+    teamInvolved: "QA Engineers · Security Specialist · Lead Developer",
   },
   {
     id: "05",
-    title: "LAUNCH & DEPLOYMENT",
-    summary: "A smooth, zero-surprise release — with your old records carried across.",
-    items: ["Data migration & import", "Staff training & handover", "Production deployment"],
-    deliverable: "Live product",
+    category: "DEPLOYMENT & HANDOVER",
+    title: "Zero-Downtime Launch and Data Migration",
+    lead: "A smooth, zero-surprise production release — with your historical records and user accounts securely carried over.",
+    details:
+      "We manage server provisioning, domain DNS cutover, automated database migration, and hands-on staff training sessions. We remain on live stand-by during launch day to ensure zero operational interruptions.",
+    deliverables: ["Live Production Deployment", "Historical Data Migration Verified", "Admin & Staff Handover Training"],
+    teamInvolved: "DevOps Engineer · Lead Architect · Client Success Manager",
   },
   {
     id: "06",
-    title: "SUPPORT & SCALE",
-    summary: "We stay with you as usage grows and requirements evolve.",
-    items: ["Support & monitoring", "Backups & updates", "New features as you grow"],
-    deliverable: "Growth & maintenance plan",
+    category: "SCALE & STEWARDSHIP",
+    title: "Ongoing Support, Monitoring and Evolution",
+    lead: "We remain your dedicated long-term software partner as user numbers, admissions, and transaction volumes scale.",
+    details:
+      "Continuous 24/7 uptime monitoring, automated off-site daily backups, security patch releases, performance tuning, and planned feature sprints as your business requirements expand over time.",
+    deliverables: ["Guaranteed SLA Response Times", "Daily Automated Cloud Backups", "Quarterly Roadmap Iterations"],
+    teamInvolved: "DevOps Engineer · Support Team · Senior Engineers",
   },
 ];
 
-const GAP = 20;
-
 export default function ProcessSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const target = useRef(0); // raw scroll progress 0..1
-  const current = useRef(0); // smoothed progress
-  const maxShiftRef = useRef(0);
-  const [active, setActive] = useState(0);
+  const [activePhase, setActivePhase] = useState(0);
+  const phaseRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const n = processSteps.length;
+  // Track active phase on natural scroll using IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute("data-index"));
+            if (!isNaN(index)) {
+              setActivePhase(index);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: "-25% 0px -45% 0px",
+        threshold: 0.1,
+      }
+    );
 
-  // Measure shift required so the last card aligns with the right end width of the container
-  const measure = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const clientW = window.innerWidth;
-    const cards = track.children;
-    if (!cards || cards.length === 0) return;
+    phaseRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
 
-    const firstCard = cards[0] as HTMLElement;
-    const lastCard = cards[cards.length - 1] as HTMLElement;
-
-    const leftPad = firstCard.offsetLeft;
-    const rightEdge = lastCard.offsetLeft + lastCard.offsetWidth;
-
-    // Shift so last card's right edge aligns with (clientW - leftPad), i.e. symmetric padding
-    const maxShift = Math.max(0, rightEdge + leftPad - clientW);
-    maxShiftRef.current = maxShift;
+    return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    measure();
-    window.addEventListener("resize", measure);
-    const timer = setTimeout(measure, 400);
-    return () => {
-      window.removeEventListener("resize", measure);
-      clearTimeout(timer);
-    };
-  }, [measure]);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const el = sectionRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const scrollable = rect.height - window.innerHeight;
-      if (scrollable <= 0) return;
-      target.current = Math.min(Math.max(-rect.top / scrollable, 0), 1);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    let raf = 0;
-    const tick = () => {
-      // ease toward the target for a smooth, carousel-like glide
-      current.current += (target.current - current.current) * 0.15;
-      if (Math.abs(target.current - current.current) < 0.0004) {
-        current.current = target.current;
-      }
-      const p = current.current;
-      const shift = p * maxShiftRef.current;
-      if (trackRef.current) {
-        trackRef.current.style.transform = `translate3d(${-shift}px,0,0)`;
-      }
-      setActive(Math.min(n - 1, Math.round(p * (n - 1))));
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, [n]);
+  const scrollToPhase = (index: number) => {
+    setActivePhase(index);
+    const targetEl = phaseRefs.current[index];
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
 
   return (
     <section
-      ref={sectionRef}
-      className="relative bg-white"
-      style={{ height: `${100 + (n - 1) * 80}vh` }}
+      id="process"
+      data-theme="light"
+      className="py-24 sm:py-28 md:py-32 bg-white bg-[#FCFCFB] text-[#0F172A] border-t border-slate-200/80"
     >
-      <div className="sticky top-0 h-screen py-20 md:py-28 flex flex-col justify-between overflow-hidden select-none">
-        {/* Heading */}
-        <div className="max-w-7xl w-full mx-auto px-6 md:px-8 mb-6 md:mb-8 flex items-end justify-between gap-6 shrink-0">
-          <h2 className="max-w-xl text-4xl md:text-5xl font-black tracking-tight leading-tight text-[#0F172A]">
-            From first conversation to go-live
-          </h2>
-          <div className="hidden sm:block text-right shrink-0">
-            <span className="text-5xl font-black text-[#2A3490] tabular-nums">
-              {processSteps[active].id}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+        
+        {/* Top Header */}
+        <div className="max-w-3xl mb-16 md:mb-24">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#2A3490]" />
+            <span className="text-xs font-bold tracking-widest uppercase text-slate-500 font-mono">
+              Engineering Architecture & Delivery
             </span>
-            <span className="text-lg font-bold text-slate-400"> / {String(n).padStart(2, "0")}</span>
           </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-[#0F172A] uppercase leading-[1.02]">
+            HOW WE BUILD <br />
+            <span className="text-[#2A3490]">AND DELIVER SOFTWARE.</span>
+          </h2>
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+            A structured, transparent lifecycle engineered to eliminate ambiguity, ship working software early, and ensure every system is built to last.
+          </p>
         </div>
 
-        {/* Full-bleed carousel track */}
-        <div className="w-full overflow-hidden my-auto">
-          <div
-            ref={trackRef}
-            className="flex items-start will-change-transform"
-            style={{
-              gap: GAP,
-              // aligns first card with the heading's left edge and last card with right container edge
-              paddingLeft: "max(1.5rem, calc((100vw - 80rem) / 2 + 2rem))",
-              paddingRight: "max(1.5rem, calc((100vw - 80rem) / 2 + 2rem))",
-            }}
-          >
-            {processSteps.map((step, i) => {
-              const isActive = i === active;
+        {/* 2-COLUMN SPLIT SCREEN (Left Sticky Diagram + Right Editorial Narrative) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* LEFT COLUMN: Sticky Architecture / Flow Diagram (Hidden on small screens, desktop-only) */}
+          <div className="hidden lg:block lg:col-span-5 sticky top-28 lg:top-36 z-20">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
+              
+              {/* Diagram Header & Legend */}
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100 text-[11px] font-mono text-slate-500">
+                <span className="font-bold uppercase tracking-wider text-slate-400">
+                  How Decisions Move
+                </span>
+                <div className="flex items-center gap-3">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-3 h-[2px] bg-[#2A3490] inline-block" />
+                    <span>Active phase</span>
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-3 h-[2px] border-t border-dashed border-slate-300 inline-block" />
+                    <span>Feedback</span>
+                  </span>
+                </div>
+              </div>
+
+              {/* Diagram Tree Nodes Container */}
+              <div className="pt-6 pb-2 flex flex-col items-center">
+                
+                {/* 1. Top Executive / Lead Architecture Node */}
+                <div className="w-full max-w-[280px] p-2.5 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center gap-2.5 shadow-2xs">
+                  <span className="w-6 h-6 rounded-full bg-[#2A3490] text-white text-[10px] font-bold flex items-center justify-center font-mono">
+                    ST
+                  </span>
+                  <span className="text-xs font-bold text-slate-800">
+                    Sutantra Technical Direction
+                  </span>
+                </div>
+
+                {/* SVG Connecting Tree Line */}
+                <div className="w-full flex justify-center py-2 relative">
+                  <div className="w-[1.5px] h-6 bg-slate-200" />
+                </div>
+
+                {/* 2. Dual Coordinators Row (Split with red/blue highlights like the screenshot) */}
+                <div className="grid grid-cols-2 gap-3 w-full">
+                  {/* Left Coordinator: Technical Architecture */}
+                  <div className="p-3 rounded-xl border border-slate-200 bg-white flex flex-col items-start gap-1.5 shadow-2xs">
+                    <div className="flex items-center gap-2">
+                      <span className="w-5 h-5 rounded-full bg-slate-100 text-[#2A3490] text-[9px] font-bold flex items-center justify-center font-mono">
+                        TA
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-800 leading-tight">
+                        Technical Architects
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-mono">Design & Core Code</span>
+                  </div>
+
+                  {/* Right Coordinator: Client & Quality Ops */}
+                  <div className="p-3 rounded-xl border border-slate-200 bg-white flex flex-col items-start gap-1.5 shadow-2xs">
+                    <div className="flex items-center gap-2">
+                      <span className="w-5 h-5 rounded-full bg-slate-100 text-orange-600 text-[9px] font-bold flex items-center justify-center font-mono">
+                        CQ
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-800 leading-tight">
+                        Client Operations
+                      </span>
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-mono">Reviews & QA Sync</span>
+                  </div>
+                </div>
+
+                {/* SVG Connecting Tree Line */}
+                <div className="w-full flex justify-center py-2 relative">
+                  <div className="w-[1.5px] h-6 bg-slate-200" />
+                </div>
+
+                {/* 3. The 6 Project Phases (Interactive List styled like reference diagram cards) */}
+                <div className="w-full space-y-2">
+                  {PHASES.map((phase, idx) => {
+                    const isActive = idx === activePhase;
+                    return (
+                      <button
+                        key={phase.id}
+                        onClick={() => scrollToPhase(idx)}
+                        className={`w-full text-left p-3 rounded-xl border transition-all duration-300 flex items-center justify-between group ${
+                          isActive
+                            ? "bg-[#2A3490]/5 border-[#2A3490] shadow-sm"
+                            : "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 truncate">
+                          <span
+                            className={`w-5 h-5 rounded-md text-[10px] font-mono font-bold flex items-center justify-center transition-colors ${
+                              isActive
+                                ? "bg-[#2A3490] text-white"
+                                : "bg-slate-100 text-slate-500 group-hover:bg-slate-200"
+                            }`}
+                          >
+                            {phase.id}
+                          </span>
+                          <span
+                            className={`text-xs font-bold transition-colors truncate ${
+                              isActive ? "text-[#2A3490]" : "text-slate-700"
+                            }`}
+                          >
+                            {phase.title}
+                          </span>
+                        </div>
+
+                        <span
+                          className={`text-[9px] font-mono px-2 py-0.5 rounded-full transition-colors shrink-0 ${
+                            isActive
+                              ? "bg-[#2A3490] text-white font-semibold"
+                              : "bg-slate-100 text-slate-500"
+                          }`}
+                        >
+                          Phase {phase.id}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+              </div>
+
+              {/* Bottom Quick Help Prompt */}
+              <div className="pt-4 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                <span>Click any phase to navigate</span>
+                <span className="text-[#2A3490] font-bold">100% In-House</span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Editorial Narrative (Takes full width on mobile/tablet) */}
+          <div className="w-full lg:col-span-7 space-y-20 lg:space-y-28">
+            {PHASES.map((phase, index) => {
+              const isActive = index === activePhase;
               return (
-                <article
-                  key={step.id}
-                  className={`shrink-0 transition-all duration-500 rounded-2xl overflow-hidden border ${
-                    isActive ? "border-[#2A3490] shadow-lg" : "border-slate-200"
-                  }`}
-                  style={{
-                    width: "clamp(300px, 85vw, 520px)",
-                    opacity: i < active ? 0.45 : 1,
+                <div
+                  key={phase.id}
+                  data-index={index}
+                  ref={(el) => {
+                    phaseRefs.current[index] = el;
                   }}
+                  className={`scroll-mt-36 transition-opacity duration-500 ${
+                    isActive ? "opacity-100" : "opacity-85 hover:opacity-100"
+                  }`}
                 >
-                  {/* Header bar */}
-                  <div
-                    className={`h-20 px-6 flex items-center justify-between transition-colors duration-500 ${
-                      isActive ? "bg-[#2A3490]" : "bg-[#E5E6E9]"
-                    }`}
-                  >
-                    <h3
-                      className={`text-xs sm:text-sm font-extrabold tracking-wider uppercase transition-colors duration-500 ${
-                        isActive ? "text-white" : "text-[#0F172A]"
-                      }`}
-                    >
-                      {step.title}
-                    </h3>
-                    <span
-                      className={`text-sm sm:text-base font-bold tabular-nums transition-colors duration-500 ${
-                        isActive ? "text-white/60" : "text-slate-400"
-                      }`}
-                    >
-                      {step.id}
+                  {/* Category Eyebrow Tag */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs font-mono font-bold tracking-widest uppercase text-slate-400">
+                      Phase {phase.id} — {phase.category}
                     </span>
                   </div>
 
-                  {/* Body */}
-                  <div className="px-6 pt-8 pb-10">
-                    <p
-                      className={`text-sm sm:text-base leading-relaxed mb-6 transition-colors duration-500 ${
-                        isActive ? "text-slate-700" : "text-slate-400"
-                      }`}
-                    >
-                      {step.summary}
+                  {/* Main Phase Title */}
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] tracking-tight leading-[1.08] mb-5">
+                    {phase.title}
+                  </h3>
+
+                  {/* Lead Summary Paragraph */}
+                  <p className="text-base sm:text-lg text-slate-700 font-normal leading-relaxed mb-6">
+                    {phase.lead}
+                  </p>
+
+                  {/* Indented Callout Note with Vertical Bar (Exactly like reference image) */}
+                  <div className="border-l-2 border-slate-300 pl-5 mb-8">
+                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-normal">
+                      {phase.details}
                     </p>
-                    <ul className="space-y-4">
-                      {step.items.map((item) => (
-                        <li
+                  </div>
+
+                  {/* Deliverables Checklist Chips */}
+                  <div className="pt-4 border-t border-slate-200/70">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-3 font-mono">
+                      Phase Artifacts & Deliverables:
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      {phase.deliverables.map((item) => (
+                        <div
                           key={item}
-                          className={`flex items-start gap-3 text-sm sm:text-base transition-colors duration-500 ${
-                            isActive ? "text-slate-600" : "text-slate-400"
-                          }`}
+                          className="flex items-center gap-2 text-xs font-medium text-slate-700 bg-white p-2.5 rounded-lg border border-slate-200/80 shadow-2xs"
                         >
-                          <span
-                            className={`mt-[7px] h-2 w-2 shrink-0 rounded-full transition-colors duration-500 ${
-                              isActive ? "bg-orange-500" : "bg-slate-300"
-                            }`}
-                          />
-                          {item}
-                        </li>
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <span>{item}</span>
+                        </div>
                       ))}
-                    </ul>
-                    <div
-                      className={`mt-8 inline-block border px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors duration-500 rounded-md ${
-                        isActive
-                          ? "border-[#2A3490] text-[#2A3490]"
-                          : "border-slate-200 text-slate-400"
-                      }`}
-                    >
-                      Output: {step.deliverable}
                     </div>
                   </div>
-                </article>
+
+                  {/* Hairline Divider between steps (as shown in reference) */}
+                  {index < PHASES.length - 1 && (
+                    <div className="border-t border-slate-200/80 mt-16 sm:mt-20" />
+                  )}
+                </div>
               );
             })}
           </div>
+
         </div>
+
       </div>
     </section>
   );
