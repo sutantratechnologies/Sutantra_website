@@ -21,7 +21,6 @@ export const metadata: Metadata = {
     apple: "/favicon_io/apple-touch-icon.png",
     shortcut: "/favicon_io/favicon.ico",
   },
-  manifest: "/favicon_io/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",

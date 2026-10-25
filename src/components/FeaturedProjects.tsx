@@ -83,14 +83,14 @@ export default function FeaturedProjects() {
     >
       {/* ===== BACKGROUND: tilted wall of project cards moving up / down ===== */}
       <div aria-hidden="true" className="absolute inset-0 -z-10 pointer-events-none [perspective:1600px]">
-        <div className="marquee-wall absolute -inset-x-[25%] -inset-y-[35%] grid grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5 [transform:rotateX(14deg)_rotateZ(-14deg)] [transform-style:preserve-3d]">
+        <div className="marquee-wall absolute -inset-x-[25%] -inset-y-[35%] grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5 [transform:rotateX(14deg)_rotateZ(-14deg)] [transform-style:preserve-3d]">
           {columns.map((items, i) => (
             <MarqueeColumn
               key={i}
               items={items}
               direction={config[i].dir}
               duration={config[i].dur}
-              className={`${config[i].offset} ${i >= 4 ? "hidden lg:block" : ""}`}
+              className={`${config[i].offset} ${i >= 4 ? "hidden lg:block" : i >= 2 ? "hidden sm:block" : ""}`}
             />
           ))}
         </div>
