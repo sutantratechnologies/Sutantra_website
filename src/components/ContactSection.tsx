@@ -134,8 +134,8 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 px-6 md:px-16 bg-[#2A3490] text-white overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto">
+    <section id="contact" className="relative py-24 md:py-32 bg-[#2A3490] text-white overflow-hidden">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
           {/* Left Column: Headline */}
@@ -213,7 +213,7 @@ export default function ContactSection() {
                   exit={{ opacity: 0 }}
                   className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 relative z-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 relative z-20">
                     <InputField label="Name" type="text" placeholder="Your full name" required />
                     <InputField label="Email" type="email" placeholder="you@example.com" required />
                     <InputField label="Phone" type="tel" placeholder="+977 987-6543210" required />

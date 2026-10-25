@@ -152,8 +152,8 @@ export default function ProjectsContent() {
   return (
     <>
       {/* Top Header */}
-      <section className="pt-36 sm:pt-40 pb-12 sm:pb-16 px-6 md:px-16 bg-white text-[#111827]">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-36 sm:pt-40 pb-12 sm:pb-16 bg-white text-[#111827]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tight uppercase leading-[0.95] mb-5 text-[#171717]">
             OUR WORK.
           </h1>
@@ -164,8 +164,8 @@ export default function ProjectsContent() {
       </section>
 
       {/* Projects Showcase Section (Blue Canvas) */}
-      <section className="pt-10 pb-24 md:pb-28 px-6 md:px-16 bg-[#2A3490] text-white flex-grow min-h-[60vh]">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-10 pb-24 md:pb-28 bg-[#2A3490] text-white flex-grow min-h-[60vh]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           {/* Sleek Filter Tabs & Search Bar */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-12 sm:mb-16 pb-8 border-b border-white/15">
             {/* Category Pills */}

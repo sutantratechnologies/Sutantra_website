@@ -51,8 +51,8 @@ export default function AboutPage() {
       <Navbar />
 
       {/* Top Header & Stats */}
-      <section className="pt-36 sm:pt-40 pb-12 sm:pb-16 px-6 md:px-16 bg-white text-[#111827]">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-36 sm:pt-40 pb-12 sm:pb-16 bg-white text-[#111827]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           {/* Main Headline */}
           <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-extrabold tracking-tighter uppercase leading-[0.95] mb-8 text-[#171717]">
             BUILT IN NEPAL.<br />BUILT TO LAST.
@@ -84,8 +84,8 @@ export default function AboutPage() {
       </section>
 
       {/* Who We Are & At a Glance */}
-      <section className="py-16 sm:py-20 px-6 md:px-16 bg-white text-[#111827]">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-16 sm:py-20 bg-white text-[#111827]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
 
             {/* Left: Who We Are */}
@@ -137,8 +137,8 @@ export default function AboutPage() {
       </section>
 
       {/* Dark Blue: How We Get On Your List */}
-      <section className="py-24 px-6 md:px-16 bg-[#2A3490] text-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 bg-[#2A3490] text-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight uppercase mb-4">
             HOW WE DECIDE WHAT TO BUILD
           </h2>
@@ -185,8 +185,8 @@ export default function AboutPage() {
       </section>
 
       {/* The Three That Made It (Founding Members) */}
-      <section className="py-24 px-6 md:px-16 bg-white text-[#111827]">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 bg-white text-[#111827]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight uppercase border-b-[3px] border-[#171717] pb-6 mb-16">
             THE PEOPLE BEHIND SUTANTRA
           </h2>
@@ -255,8 +255,8 @@ export default function AboutPage() {
       </section>
 
       {/* How A Project Runs */}
-      <section className="pb-32 px-6 md:px-16 bg-white text-[#111827]">
-        <div className="max-w-7xl mx-auto">
+      <section className="pb-32 bg-white text-[#111827]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight uppercase border-b-[3px] border-[#171717] pb-6 mb-4">
             HOW A PROJECT RUNS
           </h2>

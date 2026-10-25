@@ -20,8 +20,8 @@ export default function ContactPage() {
       <Navbar />
 
       {/* Top Header - White Background */}
-      <section className="pt-40 pb-16 px-6 md:px-16 bg-white text-[#111827]">
-        <div className="max-w-7xl mx-auto">
+      <section className="pt-40 pb-16 bg-white text-[#111827]">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tight uppercase leading-[0.95] mb-6 text-[#171717]">
             CONTACT US.
           </h1>

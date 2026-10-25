@@ -7,8 +7,8 @@ const techList = [
 
 export default function TechStack() {
   return (
-    <section id="services" className="py-20 px-6 md:px-16 bg-white border-y border-black/5 text-[#171717]">
-      <div className="max-w-7xl mx-auto text-center">
+    <section id="services" className="py-20 bg-white border-y border-black/5 text-[#171717]">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 text-center">
         <span className="text-orange-500 font-semibold tracking-widest text-xs uppercase">Modern Stack</span>
         <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight uppercase mt-2 mb-10">
           POWERING NEXT-GEN ENTERPRISE PLATFORMS

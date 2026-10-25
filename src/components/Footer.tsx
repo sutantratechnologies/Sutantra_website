@@ -21,8 +21,8 @@ export default function Footer() {
   const logoSrc = "/dashin_white_logo.png";
 
   return (
-    <footer ref={container} className="relative overflow-hidden bg-[#2A3490] text-white py-10 px-6 md:px-16 font-sans">
-      <div className="relative z-10 max-w-7xl mx-auto">
+    <footer ref={container} className="relative overflow-hidden bg-[#2A3490] text-white py-16 md:py-20 font-sans">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-10">
 

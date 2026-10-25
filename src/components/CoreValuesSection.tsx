@@ -22,8 +22,8 @@ const values = [
 
 export default function CoreValuesSection() {
   return (
-    <section className="py-24 px-6 md:px-16 bg-[#2A3490] text-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 md:py-32 bg-[#2A3490] text-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         
         {/* Header */}
         <div className="mb-16 max-w-2xl">

@@ -1,4 +1,8 @@
+"use client";
+
 import React from "react";
+import Link from "next/link";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 
 const services = [
   {
@@ -29,8 +33,8 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-24 px-6 md:px-16 bg-white text-[#171717]">
-      <div className="max-w-6xl mx-auto">
+    <section id="services" className="py-24 md:py-32 bg-white text-[#171717]">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         
         {/* Header Section */}
         <div className="mb-20 md:mb-32 max-w-2xl">
@@ -40,56 +44,63 @@ export default function ServicesSection() {
           <p className="text-base md:text-lg text-gray-500 mb-8 leading-relaxed">
             Four things, done properly: websites, mobile apps, brand design and the custom software that runs your day-to-day operations.
           </p>
-          <a 
+          <Link 
             href="/services" 
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-black border-b-2 border-black pb-1 hover:text-[#2A3490] hover:border-[#2A3490] transition-colors"
+            className="group relative overflow-hidden inline-flex items-center gap-2 rounded-full border border-black/20 px-7 py-3.5 text-xs font-bold uppercase tracking-widest text-black transition-colors duration-300"
           >
-            ALL SERVICES <span className="font-mono text-sm font-normal">›</span>
-          </a>
+            <span className="absolute inset-0 w-full h-full bg-black scale-x-0 origin-right transition-transform duration-300 ease-out group-hover:scale-x-100 group-hover:origin-left" />
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-white flex items-center gap-2">
+              <span>All Services</span>
+              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
+          </Link>
         </div>
 
-        {/* Services List */}
-        <div className="flex flex-col">
-          {services.map((service, index) => (
-            <div 
-              key={service.id} 
-              className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 py-12 md:py-16 group ${
-                index === 0 ? "border-t border-gray-200" : "border-t border-gray-200"
-              }`}
+        {/* Services List - Exact Match to Uploaded Design */}
+        <div className="flex flex-col gap-3 sm:gap-4">
+          {services.map((service) => (
+            <Link
+              key={service.id}
+              href={`/services#${service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+              className="group relative flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-10 p-6 sm:p-8 md:p-10 rounded-2xl md:rounded-3xl transition-all duration-300 hover:bg-[#F8F9FA] cursor-pointer"
             >
-              {/* Number Column */}
-              <div className="col-span-1 md:col-span-2">
-                <div className="flex flex-col text-gray-400 font-medium">
-                  <span className="text-lg tracking-wide">{service.id}</span>
-                  <span className="text-lg leading-4 mt-1 opacity-50 font-serif">. .</span>
-                </div>
+              {/* Left Column: Number & Dot */}
+              <div className="flex md:flex-col items-center md:items-start gap-1 text-slate-400 font-mono self-start pt-1 md:w-16 shrink-0 select-none">
+                <span className="text-base sm:text-lg font-medium">{service.id}</span>
+                <span className="text-sm opacity-50 font-sans leading-none">·</span>
               </div>
 
-              {/* Content Column */}
-              <div className="col-span-1 md:col-span-10 flex flex-col items-start">
-                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-6 text-black group-hover:text-[#2A3490] transition-colors">
+              {/* Middle Column: Title, Description, Tags */}
+              <div className="flex-1 max-w-2xl">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-black group-hover:text-[#2A3490] transition-colors mb-3">
                   {service.title}
                 </h3>
-                <p className="text-gray-500 text-sm md:text-base leading-relaxed max-w-2xl mb-8">
+                
+                <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
                   {service.description}
                 </p>
-                
+
                 {/* Tags */}
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2.5">
                   {service.tags.map((tag) => (
-                    <span 
-                      key={tag} 
-                      className="px-4 py-1.5 rounded-full bg-gray-100 text-[10px] font-bold tracking-widest uppercase text-gray-600 transition-colors group-hover:bg-gray-200"
+                    <span
+                      key={tag}
+                      className="px-4 py-1.5 rounded-full bg-[#ECEEF1] text-[10px] sm:text-[11px] font-bold tracking-widest uppercase text-slate-700 transition-colors group-hover:bg-[#E2E5E9]"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
+
+              {/* Right Column: Dark Circular Arrow Button */}
+              <div className="self-end md:self-center shrink-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#18202A] text-white flex items-center justify-center transition-all duration-300 group-hover:scale-105 group-hover:bg-[#2A3490] shadow-sm">
+                  <ArrowUpRight className="w-5 h-5 transition-transform duration-300 ease-out group-hover:rotate-45" />
+                </div>
+              </div>
+            </Link>
           ))}
-          {/* Final Bottom Border */}
-          <div className="border-t border-gray-200" />
         </div>
       </div>
     </section>

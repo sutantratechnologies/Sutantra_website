@@ -1,9 +1,44 @@
-"use client";
+import React from "react";
+import {
+  SiNextdotjs,
+  SiReact,
+  SiNodedotjs,
+  SiTypescript,
+  SiPostgresql,
+  SiMysql,
+  SiSupabase,
+  SiFirebase,
+  SiVercel,
+  SiTailwindcss,
+  SiFigma,
+  SiPython,
+  SiDocker,
+} from "react-icons/si";
+import { FaAws } from "react-icons/fa6";
+import { TbBrandReactNative } from "react-icons/tb";
+
+const tools = [
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "React", icon: SiReact },
+  { name: "React Native", icon: TbBrandReactNative },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "Node.js", icon: SiNodedotjs },
+  { name: "Python", icon: SiPython },
+  { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "MySQL", icon: SiMysql },
+  { name: "Supabase", icon: SiSupabase },
+  { name: "Firebase", icon: SiFirebase },
+  { name: "AWS", icon: FaAws },
+  { name: "Vercel", icon: SiVercel },
+  { name: "Docker", icon: SiDocker },
+  { name: "Tailwind CSS", icon: SiTailwindcss },
+
+];
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 px-6 md:px-16 bg-white text-[#171717]">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="py-24 md:py-32 bg-white text-[#171717]">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-start mb-24">
           {/* Left Column */}
           <div className="flex flex-col items-start space-y-10">
@@ -40,13 +75,20 @@ export default function AboutSection() {
           <p className="text-xs font-bold tracking-widest uppercase text-black/40 mb-10 text-center lg:text-left">
             Tools we build with
           </p>
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-12 gap-y-6 opacity-60 grayscale">
-            <div className="text-2xl font-bold tracking-tighter">NEXT.JS</div>
-            <div className="text-2xl font-bold tracking-tighter">REACT</div>
-            <div className="text-2xl font-bold tracking-tighter">NODE.JS</div>
-            <div className="text-2xl font-bold tracking-tighter">REACT NATIVE</div>
-            <div className="text-2xl font-bold tracking-tighter">POSTGRESQL</div>
-            <div className="text-2xl font-bold tracking-tighter">FIGMA</div>
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 sm:gap-10 md:gap-12">
+            {tools.map((tool) => {
+              const Icon = tool.icon;
+              return (
+                <div
+                  key={tool.name}
+                  className="group relative flex items-center justify-center text-black/50 hover:text-black transition-all duration-300 hover:scale-110 cursor-pointer"
+                  title={tool.name}
+                  aria-label={tool.name}
+                >
+                  <Icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10" />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

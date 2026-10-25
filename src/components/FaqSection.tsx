@@ -44,8 +44,9 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-24 px-6 md:px-16 bg-white text-[#171717]">
-      <div className="max-w-4xl mx-auto flex flex-col items-center">
+    <section id="faq" className="py-24 md:py-32 bg-white text-[#171717]">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
+        <div className="max-w-4xl mx-auto flex flex-col items-center">
         
         {/* Header Section */}
         <div className="text-center mb-16">
@@ -103,6 +104,7 @@ export default function FaqSection() {
           ))}
         </div>
 
+        </div>
       </div>
     </section>
   );
