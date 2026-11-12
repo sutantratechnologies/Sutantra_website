@@ -131,29 +131,29 @@ export default function ServicesPage() {
       </section>
 
       {/* Industries We Build For */}
-      <section className="py-24 bg-[#2A3490] text-white">
+      <section className="py-24 bg-[#EEF1F7] text-[#111827] border-t border-[#111827]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500 mb-4 block">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-[#2A3490] mb-4 block">
             Who we build for
           </span>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight max-w-3xl mb-6">
+          <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight max-w-3xl mb-6 text-[#111827]">
             Every organisation runs on rules. We turn yours into software.
           </h2>
-          <p className="text-slate-300 text-sm md:text-base max-w-2xl leading-relaxed mb-16">
+          <p className="text-[#111827]/70 text-sm md:text-base max-w-2xl leading-relaxed mb-16">
             We are not trying to sell the same template to everyone. We start with your forms, your approvals, your fee structure and your reporting, then build the system around them.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
             {industries.map((industry, index) => (
-              <div key={industry.title} className="border-t border-white/20 pt-6 flex gap-6">
-                <span className="text-sm font-bold text-white/40 tabular-nums shrink-0">
+              <div key={industry.title} className="border-t border-[#111827]/15 pt-6 flex gap-6">
+                <span className="text-sm font-bold text-[#2A3490] tabular-nums shrink-0">
                   0{index + 1}
                 </span>
                 <div>
-                  <h3 className="text-lg md:text-xl font-extrabold uppercase tracking-tight mb-2">
+                  <h3 className="text-lg md:text-xl font-extrabold uppercase tracking-tight mb-2 text-[#111827]">
                     {industry.title}
                   </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed">
+                  <p className="text-sm text-[#111827]/70 leading-relaxed">
                     {industry.description}
                   </p>
                 </div>

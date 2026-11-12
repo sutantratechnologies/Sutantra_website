@@ -1,10 +1,11 @@
 import React from "react";
+import Link from "next/link";
 
 export default function CtaBanner() {
   return (
     <section className="relative w-full py-32 md:py-40 flex items-center justify-center overflow-hidden">
       {/* Background Image & Overlay */}
-      <div className="absolute inset-0 bg-[#2A3490]/90 z-10 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-[#111827]/90 z-10 mix-blend-multiply" />
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070')] bg-cover bg-center bg-no-repeat grayscale z-0 opacity-40" />
       
       <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-10 lg:px-12 w-full text-center flex flex-col items-center">
@@ -14,9 +15,9 @@ export default function CtaBanner() {
         <p className="text-white/90 font-bold uppercase tracking-widest text-[10px] md:text-xs mb-10">
           We&apos;ll show you the software that fits around it.
         </p>
-        <a href="/contact" className="inline-flex items-center justify-center px-10 py-4 rounded-full border-2 border-white text-xs font-bold tracking-widest uppercase text-[#2A3490] bg-white hover:bg-transparent hover:text-white transition-all duration-300">
+        <Link href="/contact" className="inline-flex items-center justify-center px-10 py-4 rounded-full border-2 border-white text-xs font-bold tracking-widest uppercase text-[#111827] bg-white hover:bg-transparent hover:text-white transition-all duration-300">
           BOOK A FREE CONSULT
-        </a>
+        </Link>
       </div>
     </section>
   );

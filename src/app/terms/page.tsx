@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CtaBanner from "@/components/CtaBanner";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -32,7 +31,7 @@ export default function TermsPage() {
       {/* Content */}
       <section className="pb-32 px-6 md:px-16 bg-white text-[#111827]">
         <div className="max-w-4xl mx-auto space-y-12">
-          
+
           <div>
             <h2 className="text-lg sm:text-xl font-extrabold tracking-tight uppercase mb-3 text-[#171717]">
               1. Agreement to Terms & Applicability
@@ -200,7 +199,6 @@ export default function TermsPage() {
         </div>
       </section>
 
-      <CtaBanner />
       <Footer />
     </main>
   );
