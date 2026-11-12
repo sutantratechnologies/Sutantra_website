@@ -225,20 +225,20 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 md:px-16 bg-[#2A3490] text-white">
+      <section className="py-24 px-6 md:px-16 bg-[#EEF1F7] text-[#111827] border-t border-[#111827]/10">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-2/3">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase mb-6 leading-tight">
-              Have a similar <span className="text-orange-500">problem?</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase mb-6 leading-tight text-[#111827]">
+              Have a similar <span className="text-[#2A3490]">problem?</span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl">
+            <p className="text-base sm:text-lg md:text-xl text-[#111827]/75 max-w-2xl">
               Tell us how your team works today. We will tell you honestly what is worth building — and what is not.
             </p>
           </div>
           <div className="w-full md:w-1/3 flex md:justify-end">
             <Link
               href="/contact"
-              className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/50 text-white rounded-full font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-white hover:text-[#2A3490] transition-all duration-300 shadow-xl whitespace-nowrap"
+              className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-[#111827]/30 text-[#111827] rounded-full font-bold uppercase tracking-widest text-xs sm:text-sm hover:bg-[#111827] hover:text-white transition-all duration-300 shadow-md whitespace-nowrap"
             >
               Start a Project
               <ArrowUpRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -248,22 +248,22 @@ export default async function ProjectDetailPage({ params }: Props) {
       </section>
 
       {/* Next Project Section */}
-      <section className="py-16 px-6 md:px-16 bg-white overflow-hidden border-t border-slate-200">
+      <section className="py-16 px-6 md:px-16 bg-[#EEF1F7] text-[#111827] overflow-hidden border-t border-[#111827]/10">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10 lg:gap-16">
           {/* Left Content */}
           <div className="w-full md:w-1/2 flex flex-col justify-center">
-            <span className="text-xs font-bold tracking-[0.2em] text-slate-400 uppercase mb-3">
+            <span className="text-xs font-bold tracking-[0.2em] text-[#2A3490] uppercase mb-3">
               Next Project
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase text-slate-900 leading-[1.1] mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase text-[#111827] leading-[1.1] mb-4">
               {nextProject.title}
             </h2>
-            <div className="text-xs font-bold tracking-[0.1em] text-slate-400 uppercase mb-8">
+            <div className="text-xs font-bold tracking-[0.1em] text-[#111827]/60 uppercase mb-8">
               {nextProject.tags.join(" • ")}
             </div>
             <Link
               href={`/projects/${nextProject.slug}`}
-              className="inline-flex items-center text-xs sm:text-sm font-bold text-slate-900 hover:text-orange-500 transition-colors uppercase tracking-widest border-b-2 border-slate-900 hover:border-orange-500 pb-1 w-fit group"
+              className="inline-flex items-center text-xs sm:text-sm font-bold text-[#111827] hover:text-[#2A3490] transition-colors uppercase tracking-widest border-b-2 border-[#111827] hover:border-[#2A3490] pb-1 w-fit group"
             >
               View Project
               <ArrowUpRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -272,7 +272,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
           {/* Right Image */}
           <div className="w-full md:w-1/2">
-            <div className="border-[6px] border-[#2A3490] bg-[#2A3490] rounded-2xl overflow-hidden shadow-lg">
+            <div className="border-[6px] border-white bg-white rounded-2xl overflow-hidden shadow-md">
               <div className="aspect-video w-full relative group overflow-hidden bg-white rounded-xl">
                 <Link href={`/projects/${nextProject.slug}`} className="block w-full h-full relative">
                   <Image

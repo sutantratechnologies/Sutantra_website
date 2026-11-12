@@ -11,11 +11,11 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-[#171717] flex flex-col font-telegraf selection:bg-orange-500 selection:text-white">
+    <main className="min-h-screen bg-[#EEF1F7] text-[#111827] flex flex-col font-telegraf selection:bg-[#2A3490] selection:text-white">
       <Navbar />
       <Hero />
       <AboutSection />
-      <FeaturedProjects />
+      {/* <FeaturedProjects /> */}
       <ServicesSection />
       <CoreValuesSection />
       <ProcessSection />

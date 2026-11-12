@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
 @theme inline {
@@ -40,4 +40,57 @@ body::-webkit-scrollbar {
 /* Custom Utilities for Glassmorphism & Font */
 .font-telegraf {
   font-family: PPTelegraf, Arial, Helvetica, sans-serif;
+}
+
+.bg-hero-grid {
+  background-color: #eef1f7;
+  background-image:
+    linear-gradient(to right, rgba(42, 52, 144, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(42, 52, 144, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-x {
+  animation: marquee-x 28s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-x {
+    animation: none;
+  }
+}
+
+.paper-deckled-mask {
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='48' viewBox='0 0 12 48' preserveAspectRatio='none'%3E%3Cpath d='M12,0 L3,6 L9,12 L2,18 L8,24 L1,30 L9,36 L3,42 L12,48 Z' fill='black'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' preserveAspectRatio='none'%3E%3Crect width='10' height='10' fill='black'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='48' viewBox='0 0 12 48' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L9,6 L3,12 L10,18 L4,24 L11,30 L3,36 L9,42 L0,48 Z' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='48' viewBox='0 0 12 48' preserveAspectRatio='none'%3E%3Cpath d='M12,0 L3,6 L9,12 L2,18 L8,24 L1,30 L9,36 L3,42 L12,48 Z' fill='black'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' preserveAspectRatio='none'%3E%3Crect width='10' height='10' fill='black'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='48' viewBox='0 0 12 48' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L9,6 L3,12 L10,18 L4,24 L11,30 L3,36 L9,42 L0,48 Z' fill='black'/%3E%3C/svg%3E");
+  mask-position: left top, center top, right top;
+  -webkit-mask-position: left top, center top, right top;
+  mask-size: 12px 48px, calc(100% - 22px) 100%, 12px 48px;
+  -webkit-mask-size: 12px 48px, calc(100% - 22px) 100%, 12px 48px;
+  mask-repeat: repeat-y, no-repeat, repeat-y;
+  -webkit-mask-repeat: repeat-y, no-repeat, repeat-y;
+}
+
+.paper-sheet-surface {
+  background: linear-gradient(135deg, #eaeff9 0%, #d7e2f5 50%, #c4d4ee 100%);
+}
+
+.paper-grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E");
 }

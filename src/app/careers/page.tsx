@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CtaBanner from "@/components/CtaBanner";
 import Link from "next/link";
 
 import type { Metadata } from "next";
@@ -41,11 +40,11 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Main Content - Blue Background */}
-      <section className="py-24 bg-[#2A3490] text-white flex-grow min-h-[50vh]">
+      {/* Main Content - Gray Background */}
+      <section className="py-24 bg-[#EEF1F7] text-[#111827] border-t border-[#111827]/10 flex-grow min-h-[50vh]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold uppercase mb-4">Open Positions</h2>
-          <p className="text-white/70 text-sm md:text-base max-w-2xl mb-12">
+          <h2 className="text-3xl md:text-4xl font-extrabold uppercase mb-4 text-[#111827]">Open Positions</h2>
+          <p className="text-[#111827]/70 text-sm md:text-base max-w-2xl mb-12">
             We hire for full-stack development, mobile development, UI and graphic design, and QA. Internships are available for final-year students.
           </p>
 
@@ -54,38 +53,38 @@ export default function CareersPage() {
               {jobs.map((job, index) => (
                 <div
                   key={job.id}
-                  className={`flex flex-col md:flex-row items-start md:items-center justify-between py-10 group ${index === 0 ? "border-t border-white/20" : "border-t border-white/20"
+                  className={`flex flex-col md:flex-row items-start md:items-center justify-between py-10 group ${index === 0 ? "border-t border-[#111827]/15" : "border-t border-[#111827]/15"
                     }`}
                 >
                   <div className="flex flex-col mb-6 md:mb-0">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-[#00d2ff] transition-colors mb-2">
+                    <h3 className="text-2xl md:text-3xl font-bold text-[#111827] group-hover:text-[#2A3490] transition-colors mb-2">
                       {job.title}
                     </h3>
-                    <div className="flex items-center gap-4 text-white/60 text-sm font-medium tracking-wide">
+                    <div className="flex items-center gap-4 text-[#111827]/60 text-sm font-medium tracking-wide">
                       <span>{job.type}</span>
-                      <span className="w-1 h-1 rounded-full bg-white/30"></span>
+                      <span className="w-1 h-1 rounded-full bg-[#111827]/30"></span>
                       <span>{job.location}</span>
                     </div>
                   </div>
 
                   <Link
                     href="/#contact"
-                    className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/30 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[#2A3490] transition-colors duration-300"
+                    className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-[#111827]/30 text-sm font-bold tracking-widest uppercase hover:bg-[#111827] hover:text-white transition-colors duration-300 text-[#111827]"
                   >
                     Apply Now ↗
                   </Link>
                 </div>
               ))}
-              <div className="border-t border-white/20" />
+              <div className="border-t border-[#111827]/15" />
             </div>
           ) : (
-            <div className="py-12 border-t border-b border-white/20">
-              <p className="text-white/70 text-lg mb-6">
+            <div className="py-12 border-t border-b border-[#111827]/15">
+              <p className="text-[#111827]/70 text-lg mb-6">
                 There are no advertised vacancies right now, but we keep good applications on file.
               </p>
               <a
                 href="mailto:info@sutantratechnology.com?subject=Application%20%E2%80%94%20Sutantra%20Technologies"
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-white/30 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-[#2A3490] transition-colors duration-300"
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-[#111827]/30 text-sm font-bold tracking-widest uppercase hover:bg-[#111827] hover:text-white transition-colors duration-300 text-[#111827]"
               >
                 Send Your CV ↗
               </a>
@@ -98,7 +97,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      <CtaBanner />
+
 
       <Footer />
     </main>

@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { CheckCircle2, ArrowUpRight } from "lucide-react";
 
 interface PhaseData {
   id: string;
@@ -118,7 +119,7 @@ export default function ProcessSection() {
     <section
       id="process"
       data-theme="light"
-      className="py-24 sm:py-28 md:py-32 bg-white bg-[#FCFCFB] text-[#0F172A] border-t border-slate-200/80"
+      className="py-24 sm:py-28 md:py-32 bg-[#EEF1F7] text-[#111827] border-t border-[#2A3490]/10"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
         
@@ -142,132 +143,102 @@ export default function ProcessSection() {
         {/* 2-COLUMN SPLIT SCREEN (Left Sticky Diagram + Right Editorial Narrative) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* LEFT COLUMN: Sticky Architecture / Flow Diagram (Hidden on small screens, desktop-only) */}
-          <div className="hidden lg:block lg:col-span-5 sticky top-28 lg:top-36 z-20">
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 shadow-sm">
-              
-              {/* Diagram Header & Legend */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100 text-[11px] font-mono text-slate-500">
-                <span className="font-bold uppercase tracking-wider text-slate-400">
-                  How Decisions Move
-                </span>
-                <div className="flex items-center gap-3">
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-3 h-[2px] bg-[#2A3490] inline-block" />
-                    <span>Active phase</span>
+          {/* LEFT COLUMN: Sticky Phase Roadmap & Live Progress (Hidden on small screens, desktop-only) */}
+          <div className="hidden lg:block lg:col-span-5 sticky top-24 lg:top-28 z-20">
+            <div className="rounded-3xl border border-white/10 bg-[#2A3490] text-white p-5 sm:p-6 shadow-xl relative overflow-hidden">
+              {/* Top Progress Header */}
+              <div className="flex items-center justify-between gap-4 pb-3">
+                <div>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-white/75 block">
+                    Delivery Roadmap
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-3 h-[2px] border-t border-dashed border-slate-300 inline-block" />
-                    <span>Feedback</span>
+                  <span className="text-xs font-bold text-white mt-0.5 block">
+                    Phase 0{activePhase + 1} of 0{PHASES.length}
                   </span>
                 </div>
+                <span className="rounded-full bg-white/10 border border-white/15 px-3 py-1 text-[11px] font-mono font-bold text-white">
+                  {Math.round(((activePhase + 1) / PHASES.length) * 100)}%
+                </span>
               </div>
 
-              {/* Diagram Tree Nodes Container */}
-              <div className="pt-6 pb-2 flex flex-col items-center">
-                
-                {/* 1. Top Executive / Lead Architecture Node */}
-                <div className="w-full max-w-[280px] p-2.5 rounded-xl border border-slate-200 bg-slate-50 flex items-center justify-center gap-2.5 shadow-2xs">
-                  <span className="w-6 h-6 rounded-full bg-[#2A3490] text-white text-[10px] font-bold flex items-center justify-center font-mono">
-                    ST
-                  </span>
-                  <span className="text-xs font-bold text-slate-800">
-                    Sutantra Technical Direction
-                  </span>
-                </div>
+              {/* Smooth Progress Bar */}
+              <div className="w-full h-1.5 rounded-full bg-white/15 overflow-hidden mb-4">
+                <div
+                  className="h-full rounded-full bg-white transition-all duration-500 ease-out"
+                  style={{ width: `${((activePhase + 1) / PHASES.length) * 100}%` }}
+                />
+              </div>
 
-                {/* SVG Connecting Tree Line */}
-                <div className="w-full flex justify-center py-2 relative">
-                  <div className="w-[1.5px] h-6 bg-slate-200" />
-                </div>
-
-                {/* 2. Dual Coordinators Row (Split with red/blue highlights like the screenshot) */}
-                <div className="grid grid-cols-2 gap-3 w-full">
-                  {/* Left Coordinator: Technical Architecture */}
-                  <div className="p-3 rounded-xl border border-slate-200 bg-white flex flex-col items-start gap-1.5 shadow-2xs">
-                    <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-slate-100 text-[#2A3490] text-[9px] font-bold flex items-center justify-center font-mono">
-                        TA
-                      </span>
-                      <span className="text-[11px] font-bold text-slate-800 leading-tight">
-                        Technical Architects
-                      </span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 font-mono">Design & Core Code</span>
-                  </div>
-
-                  {/* Right Coordinator: Client & Quality Ops */}
-                  <div className="p-3 rounded-xl border border-slate-200 bg-white flex flex-col items-start gap-1.5 shadow-2xs">
-                    <div className="flex items-center gap-2">
-                      <span className="w-5 h-5 rounded-full bg-slate-100 text-orange-600 text-[9px] font-bold flex items-center justify-center font-mono">
-                        CQ
-                      </span>
-                      <span className="text-[11px] font-bold text-slate-800 leading-tight">
-                        Client Operations
-                      </span>
-                    </div>
-                    <span className="text-[10px] text-slate-400 font-mono">Reviews & QA Sync</span>
-                  </div>
-                </div>
-
-                {/* SVG Connecting Tree Line */}
-                <div className="w-full flex justify-center py-2 relative">
-                  <div className="w-[1.5px] h-6 bg-slate-200" />
-                </div>
-
-                {/* 3. The 6 Project Phases (Interactive List styled like reference diagram cards) */}
-                <div className="w-full space-y-2">
-                  {PHASES.map((phase, idx) => {
-                    const isActive = idx === activePhase;
-                    return (
-                      <button
-                        key={phase.id}
-                        onClick={() => scrollToPhase(idx)}
-                        className={`w-full text-left p-3 rounded-xl border transition-all duration-300 flex items-center justify-between group ${
+              {/* Connected Vertical Phase Stepper */}
+              <div className="relative pl-5 space-y-1.5 before:content-[''] before:absolute before:left-[7px] before:top-4 before:bottom-4 before:w-[1.5px] before:bg-white/20">
+                {PHASES.map((phase, idx) => {
+                  const isActive = idx === activePhase;
+                  const isCompleted = idx < activePhase;
+                  return (
+                    <button
+                      key={phase.id}
+                      type="button"
+                      onClick={() => scrollToPhase(idx)}
+                      className={`relative w-full text-left px-3 py-2.5 rounded-xl border transition-all duration-200 cursor-pointer group ${
+                        isActive
+                          ? "bg-white border-white text-[#2A3490] shadow-md"
+                          : "bg-white/5 border-transparent hover:bg-white/10 text-white"
+                      }`}
+                    >
+                      {/* Stepper Node on Vertical Rail */}
+                      <span
+                        aria-hidden="true"
+                        className={`absolute -left-[21px] top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full border-2 transition-colors ${
                           isActive
-                            ? "bg-[#2A3490]/5 border-[#2A3490] shadow-sm"
-                            : "bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50/60"
+                            ? "bg-white border-[#2A3490] ring-2 ring-white"
+                            : isCompleted
+                            ? "bg-white border-white"
+                            : "bg-[#2A3490] border-white/40 group-hover:border-white"
                         }`}
-                      >
-                        <div className="flex items-center gap-2.5 truncate">
+                      />
+
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex items-center gap-2.5 min-w-0">
                           <span
-                            className={`w-5 h-5 rounded-md text-[10px] font-mono font-bold flex items-center justify-center transition-colors ${
-                              isActive
-                                ? "bg-[#2A3490] text-white"
-                                : "bg-slate-100 text-slate-500 group-hover:bg-slate-200"
+                            className={`text-[11px] font-mono font-bold shrink-0 ${
+                              isActive ? "text-[#2A3490]" : "text-white/60"
                             }`}
                           >
                             {phase.id}
                           </span>
-                          <span
-                            className={`text-xs font-bold transition-colors truncate ${
-                              isActive ? "text-[#2A3490]" : "text-slate-700"
-                            }`}
-                          >
+                          <span className={`text-xs font-bold truncate ${isActive ? "text-[#2A3490]" : "text-white"}`}>
                             {phase.title}
                           </span>
                         </div>
-
                         <span
-                          className={`text-[9px] font-mono px-2 py-0.5 rounded-full transition-colors shrink-0 ${
-                            isActive
-                              ? "bg-[#2A3490] text-white font-semibold"
-                              : "bg-slate-100 text-slate-500"
+                          className={`text-[9px] font-mono uppercase tracking-wider shrink-0 ${
+                            isActive ? "text-[#2A3490] font-bold" : isCompleted ? "text-white/70" : "text-white/45"
                           }`}
                         >
-                          Phase {phase.id}
+                          {isActive ? "Active" : isCompleted ? "Done" : "Next"}
                         </span>
-                      </button>
-                    );
-                  })}
-                </div>
+                      </div>
 
+                      {isActive && (
+                        <p className="mt-1.5 pt-1.5 border-t border-[#2A3490]/15 text-[10px] font-mono text-[#2A3490]/80 truncate">
+                          {phase.teamInvolved}
+                        </p>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
 
-              {/* Bottom Quick Help Prompt */}
-              <div className="pt-4 mt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-                <span>Click any phase to navigate</span>
-                <span className="text-[#2A3490] font-bold">100% In-House</span>
+              {/* Bottom Footer Strip */}
+              <div className="pt-3.5 mt-3.5 border-t border-white/15 flex items-center justify-between text-[11px] font-mono">
+                <span className="text-white/60">100% In-House Team</span>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-1 font-bold text-white hover:text-orange-400 transition-colors"
+                >
+                  <span>Start a Project</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
           </div>
@@ -285,17 +256,30 @@ export default function ProcessSection() {
                   }}
                   className={`scroll-mt-36 transition-opacity duration-500 ${
                     isActive ? "opacity-100" : "opacity-85 hover:opacity-100"
+                  } ${
+                    index === PHASES.length - 1
+                      ? "lg:min-h-[435px] lg:flex lg:flex-col lg:justify-between"
+                      : ""
                   }`}
                 >
-                  {/* Category Eyebrow Tag */}
+                  <div>
+                    {/* Category Eyebrow Tag */}
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs font-mono font-bold tracking-widest uppercase text-slate-400">
+                    <span
+                      className={`text-xs font-mono font-bold tracking-widest uppercase transition-colors duration-300 ${
+                        isActive ? "text-[#2A3490]" : "text-slate-400"
+                      }`}
+                    >
                       Phase {phase.id} — {phase.category}
                     </span>
                   </div>
 
                   {/* Main Phase Title */}
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0F172A] tracking-tight leading-[1.08] mb-5">
+                  <h3
+                    className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.08] mb-5 transition-colors duration-300 ${
+                      isActive ? "text-[#2A3490]" : "text-[#0F172A]"
+                    }`}
+                  >
                     {phase.title}
                   </h3>
 
@@ -310,6 +294,7 @@ export default function ProcessSection() {
                       {phase.details}
                     </p>
                   </div>
+                  </div>
 
                   {/* Deliverables Checklist Chips */}
                   <div className="pt-4 border-t border-slate-200/70">
@@ -322,7 +307,7 @@ export default function ProcessSection() {
                           key={item}
                           className="flex items-center gap-2 text-xs font-medium text-slate-700 bg-white p-2.5 rounded-lg border border-slate-200/80 shadow-2xs"
                         >
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-[#2A3490] shrink-0" />
                           <span>{item}</span>
                         </div>
                       ))}

@@ -163,11 +163,11 @@ export default function ProjectsContent() {
         </div>
       </section>
 
-      {/* Projects Showcase Section (Blue Canvas) */}
-      <section className="pt-10 pb-24 md:pb-28 bg-[#2A3490] text-white flex-grow min-h-[60vh]">
+      {/* Projects Showcase Section (Gray Canvas) */}
+      <section className="pt-10 pb-24 md:pb-28 bg-[#EEF1F7] text-[#111827] border-t border-[#111827]/10 flex-grow min-h-[60vh]">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
           {/* Sleek Filter Tabs & Search Bar */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-12 sm:mb-16 pb-8 border-b border-white/15">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-12 sm:mb-16 pb-8 border-b border-[#111827]/15">
             {/* Category Pills */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
               {CATEGORIES.map((cat) => {
@@ -181,16 +181,16 @@ export default function ProjectsContent() {
                     onClick={() => setActiveCategory(cat.id)}
                     className={`group px-4 py-2 sm:py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer flex items-center gap-2 ${
                       isSelected
-                        ? "bg-white text-[#2A3490] shadow-md scale-[1.02]"
-                        : "bg-white/10 hover:bg-white/15 text-white/80 hover:text-white border border-white/10 hover:border-white/20"
+                        ? "bg-[#2A3490] text-white shadow-md scale-[1.02]"
+                        : "bg-white hover:bg-slate-50 text-[#111827]/80 hover:text-[#111827] border border-[#111827]/15 hover:border-[#111827]/30"
                     }`}
                   >
                     <span>{cat.shortLabel}</span>
                     <span
                       className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold transition-colors ${
                         isSelected
-                          ? "bg-[#2A3490]/10 text-[#2A3490]"
-                          : "bg-white/10 text-white/60 group-hover:text-white"
+                          ? "bg-white/20 text-white"
+                          : "bg-[#111827]/5 text-[#111827]/60 group-hover:text-[#111827]"
                       }`}
                     >
                       {count}
@@ -202,7 +202,7 @@ export default function ProjectsContent() {
 
             {/* Minimalist Search Bar */}
             <div className="relative w-full lg:w-72 sm:w-80 shrink-0">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/50 pointer-events-none" />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#111827]/40 pointer-events-none" />
               <input
                 ref={searchInputRef}
                 type="text"
@@ -210,7 +210,7 @@ export default function ProjectsContent() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search projects..."
                 aria-label="Search projects"
-                className="w-full h-10 sm:h-11 pl-10 pr-9 rounded-full bg-white/10 hover:bg-white/15 focus:bg-white/20 border border-white/20 focus:border-white text-white placeholder-white/50 text-xs sm:text-sm font-medium outline-none transition-all shadow-inner focus:ring-2 focus:ring-white/20"
+                className="w-full h-10 sm:h-11 pl-10 pr-9 rounded-full bg-white hover:bg-slate-50 focus:bg-white border border-[#111827]/15 focus:border-[#2A3490] text-[#111827] placeholder-[#111827]/40 text-xs sm:text-sm font-medium outline-none transition-all shadow-xs focus:ring-2 focus:ring-[#2A3490]/15"
               />
               {searchQuery && (
                 <button
@@ -220,7 +220,7 @@ export default function ProjectsContent() {
                     searchInputRef.current?.focus();
                   }}
                   aria-label="Clear search"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full text-white/60 hover:text-white hover:bg-white/20 transition-colors cursor-pointer"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full text-[#111827]/60 hover:text-[#111827] hover:bg-[#111827]/10 transition-colors cursor-pointer"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -326,15 +326,15 @@ export default function ProjectsContent() {
                       <div className="mt-5 flex flex-col justify-between">
                         <div>
                           <div className="flex items-center justify-between gap-4">
-                            <h2 className="text-xl md:text-2xl font-bold text-white group-hover:text-orange-400 transition-colors">
+                            <h2 className="text-xl md:text-2xl font-bold text-[#111827] group-hover:text-[#2A3490] transition-colors">
                               {project.title}
                             </h2>
-                            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center shrink-0 text-white/50 group-hover:text-white group-hover:border-white group-hover:bg-white/10 group-hover:translate-x-1 transition-all">
+                            <div className="w-8 h-8 rounded-full border border-[#111827]/15 flex items-center justify-center shrink-0 text-[#111827]/50 group-hover:text-white group-hover:border-[#2A3490] group-hover:bg-[#2A3490] group-hover:translate-x-1 transition-all">
                               <ArrowRight className="w-4 h-4" />
                             </div>
                           </div>
 
-                          <p className="text-white/60 text-sm mt-2.5 leading-relaxed line-clamp-2">
+                          <p className="text-[#111827]/65 text-sm mt-2.5 leading-relaxed line-clamp-2">
                             {project.description}
                           </p>
                         </div>
@@ -346,7 +346,7 @@ export default function ProjectsContent() {
                               {project.technologies.map((tech) => (
                                 <span
                                   key={tech}
-                                  className="text-[10px] font-medium text-white/60 bg-white/5 px-2.5 py-1 rounded border border-white/10"
+                                  className="text-[10px] font-medium text-[#111827]/70 bg-white px-2.5 py-1 rounded border border-[#111827]/10"
                                 >
                                   {tech}
                                 </span>

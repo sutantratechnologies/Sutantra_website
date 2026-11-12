@@ -136,46 +136,46 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Dark Blue: How We Get On Your List */}
-      <section className="py-24 bg-[#2A3490] text-white">
+      {/* How We Decide What To Build */}
+      <section className="py-24 bg-[#EEF1F7] text-[#111827] border-t border-[#111827]/10">
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight uppercase mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight uppercase mb-4 text-[#111827]">
             HOW WE DECIDE WHAT TO BUILD
           </h2>
-          <p className="text-xs md:text-sm text-white/80 uppercase tracking-widest font-bold mb-16 border-b border-white/20 pb-8 inline-block pr-12">
+          <p className="text-xs md:text-sm text-[#111827]/70 uppercase tracking-widest font-bold mb-16 border-b border-[#111827]/15 pb-8 inline-block pr-12">
             Four questions before the first line of code.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-12">
 
             <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-widest mb-4 border-b border-white/30 pb-2 w-12">01.</span>
-              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 leading-tight">DOES IT SOLVE THE REAL PROBLEM?</h4>
-              <p className="text-xs leading-relaxed text-white/70">
+              <span className="text-sm font-bold tracking-widest mb-4 border-b border-[#2A3490]/30 pb-2 w-12 text-[#2A3490]">01.</span>
+              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 leading-tight text-[#111827]">DOES IT SOLVE THE REAL PROBLEM?</h4>
+              <p className="text-xs leading-relaxed text-[#111827]/70">
                 We map your current process first. If a simpler workflow or an existing tool does the job, we say so before you spend on development.
               </p>
             </div>
 
             <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-widest mb-4 border-b border-white/30 pb-2 w-12">02.</span>
-              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 leading-tight">IS THE DATA SAFE?</h4>
-              <p className="text-xs leading-relaxed text-white/70">
+              <span className="text-sm font-bold tracking-widest mb-4 border-b border-[#2A3490]/30 pb-2 w-12 text-[#2A3490]">02.</span>
+              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 leading-tight text-[#111827]">IS THE DATA SAFE?</h4>
+              <p className="text-xs leading-relaxed text-[#111827]/70">
                 Student records, fees, client files and invoices need proper access rules, backups and audit trails. We design for that from day one.
               </p>
             </div>
 
             <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-widest mb-4 border-b border-white/30 pb-2 w-12">03.</span>
-              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 leading-tight">CAN WE DELIVER IT?</h4>
-              <p className="text-xs leading-relaxed text-white/70">
+              <span className="text-sm font-bold tracking-widest mb-4 border-b border-[#2A3490]/30 pb-2 w-12 text-[#2A3490]">03.</span>
+              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 leading-tight text-[#111827]">CAN WE DELIVER IT?</h4>
+              <p className="text-xs leading-relaxed text-[#111827]/70">
                 We only take on work our in-house team can build and maintain. If part of it needs a specialist, we bring in the right one instead of guessing.
               </p>
             </div>
 
             <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-widest mb-4 border-b border-white/30 pb-2 w-12">04.</span>
-              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 leading-tight">CAN YOU RUN IT WITHOUT US?</h4>
-              <p className="text-xs leading-relaxed text-white/70">
+              <span className="text-sm font-bold tracking-widest mb-4 border-b border-[#2A3490]/30 pb-2 w-12 text-[#2A3490]">04.</span>
+              <h4 className="text-sm font-bold uppercase tracking-wider mb-4 leading-tight text-[#111827]">CAN YOU RUN IT WITHOUT US?</h4>
+              <p className="text-xs leading-relaxed text-[#111827]/70">
                 Your staff get training, documentation and admin access. We want to be your support team, not a dependency you cannot leave.
               </p>
             </div>

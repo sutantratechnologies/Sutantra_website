@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
-import FestivalWelcome from "@/components/FestivalWelcome";
 import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
@@ -43,7 +42,7 @@ export default function RootLayout({
     "name": "Sutantra Technologies",
     "legalName": "Sutantra Technologies",
     "url": "https://www.sutantratechnology.com",
-    "logo": "https://www.sutantratechnology.com/logo_light.svg",
+    "logo": "https://www.sutantratechnology.com/logo_light.png",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Butwal",
@@ -147,7 +146,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className="flex flex-col bg-slate-950 text-white font-telegraf" suppressHydrationWarning>
+      <body className="flex flex-col bg-white text-[#171717] font-telegraf" suppressHydrationWarning>
         {/* Google Analytics */}
         <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-NDPFWG4YPG" />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -162,9 +161,6 @@ export default function RootLayout({
         <SmoothScrolling>
           {children}
         </SmoothScrolling>
-
-        {/* Seasonal greeting — remove this one line to take it down */}
-        <FestivalWelcome />
 
         {/* Vercel Web Analytics */}
         <Analytics />
